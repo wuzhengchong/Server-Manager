@@ -1,0 +1,51 @@
+{
+  "wzc": {
+    "salt": "df014e59702e55fb617bb0ebd8f05ab5",
+    "hash": "464763bf306c02ccddeeb69f7717fd407a56e59554e06c2f5de5be9c2c43c65a",
+    "created": "2026-11-02 22:27:25",
+    "migrated": "from server 1.0"
+  },
+  "2504030106": {
+    "salt": "506f44c71693d7cf0220f3602c062028",
+    "hash": "8fae37a3c8725c9bb17ed06a69814a7f6e45a6f552a3aa9c80b6e6d9458e787b",
+    "created": "2026-11-06 19:52:54",
+    "ip": "127.0.0.1"
+  },
+  "2504030107": {
+    "salt": "0b78ecd2b01bd5e8808c1653e4783060",
+    "hash": "cdf41d09e3801ab8ad2f5cb50a6779cc96500d6f86b3acf685eb5e62a55622cd",
+    "created": "2026-11-06 19:53:46",
+    "ip": "127.0.0.1"
+  },
+  "2504030112": {
+    "salt": "3d4c35a0fa4991f6f4aabdfc7fd57c9f",
+    "hash": "64f8a66f69da93d63b1ff8cf4c55b8bb2816c3a59c1fddbdd42e9c0ff9490158",
+    "created": "2026-11-06 20:14:34",
+    "ip": "123.90.22.29",
+    "pwd_changed": "2026-11-08 10:50:10"
+  },
+  "2504030110": {
+    "salt": "403bb45ff98f9c79e81f5f5bea34bb44",
+    "hash": "199c1823d18988b7c5ff091787239c8297e44b59833e8949f0485ef2409b2a32",
+    "created": "2026-11-06 22:06:40",
+    "ip": "120.230.136.251"
+  },
+  "2504030103": {
+    "salt": "e9ed229cdeebec062ebbc04733139f06",
+    "hash": "40492a7b62cfa63f205fbdddd68a6d2ac3132ae25117f87682f120cc141a830f",
+    "created": "2026-11-08 15:07:47",
+    "ip": "127.0.0.1"
+  },
+  "qazwsxedcrfvtgbyhn": {
+    "salt": "cd031d2a809ea48c4f18479487cdfd99",
+    "hash": "f1fbc24707beaec7cd7069f3dcae63fa7ea7a3db5ac4b2b0cb427315b809bf41",
+    "created": "2026-11-13 20:40:55",
+    "ip": "127.0.0.1"
+  },
+  "djxjfbfjdkakkendxnf": {
+    "salt": "fb0a5fdfc761ea17e15ca7cd5b3ff444",
+    "hash": "eb1a3af7752865c71b9cfd8103aaf5655ab97e37612e8b6c6f8fb2f7ccf4de03",
+    "created": "2026-11-14 07:14:21",
+    "ip": "127.0.0.1"
+  }
+}

@@ -1,0 +1,1118 @@
+{
+  "2026-11-08": {
+    "pv": 82,
+    "hours": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      8,
+      4,
+      1,
+      3,
+      4,
+      34,
+      11,
+      0,
+      2,
+      10,
+      3,
+      0,
+      2,
+      0
+    ],
+    "ips": {
+      "127.0.0.1": {
+        "first": "10:17:46",
+        "hits": 67,
+        "last": "20:49:25",
+        "ts": 1794142165.3746219,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "34.116.145.218": {
+        "first": "10:47:42",
+        "hits": 1,
+        "last": "10:47:42",
+        "ts": 1794106062.0805564,
+        "ua": "Mozilla/5.0 (iPhone13,2; U; CPU iPhone OS 14_0 like Mac OS X"
+      },
+      "123.90.22.93": {
+        "first": "10:52:38",
+        "hits": 4,
+        "last": "22:03:25",
+        "ts": 1794146605.476769,
+        "ua": "Dalvik/2.1.0 (Linux; U; Android 15; PGZ110 Build/AP3A.240617"
+      },
+      "152.55.185.11": {
+        "first": "11:04:51",
+        "hits": 1,
+        "last": "11:04:51",
+        "ts": 1794107091.3125842,
+        "ua": "Mozilla/5.0 (compatible; DomainDragon/1.0; +status-check)"
+      },
+      "32.201.53.113": {
+        "first": "11:21:19",
+        "hits": 1,
+        "last": "11:21:19",
+        "ts": 1794108079.0410147,
+        "ua": "okhttp/5.3.0"
+      },
+      "34.118.83.145": {
+        "first": "12:00:27",
+        "hits": 1,
+        "last": "12:00:27",
+        "ts": 1794110427.4454825,
+        "ua": "Mozilla/5.0 (iPhone13,2; U; CPU iPhone OS 14_0 like Mac OS X"
+      },
+      "106.75.174.15": {
+        "first": "13:35:10",
+        "hits": 1,
+        "last": "13:35:10",
+        "ts": 1794116110.0497236,
+        "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like"
+      },
+      "106.75.173.44": {
+        "first": "13:35:31",
+        "hits": 1,
+        "last": "13:35:31",
+        "ts": 1794116131.1004303,
+        "ua": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like"
+      },
+      "157.245.5.227": {
+        "first": "14:15:07",
+        "hits": 1,
+        "last": "14:15:07",
+        "ts": 1794118507.585533,
+        "ua": "Mozilla/5.0"
+      },
+      "138.68.132.101": {
+        "first": "14:17:47",
+        "hits": 1,
+        "last": "14:17:47",
+        "ts": 1794118667.5000165,
+        "ua": "Mozilla/5.0"
+      },
+      "62.238.104.113": {
+        "first": "15:48:28",
+        "hits": 1,
+        "last": "15:48:28",
+        "ts": 1794124108.7224402,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "89.249.193.230": {
+        "first": "16:56:33",
+        "hits": 1,
+        "last": "16:56:33",
+        "ts": 1794128193.4202101,
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/"
+      },
+      "162.35.169.23": {
+        "first": "22:19:39",
+        "hits": 1,
+        "last": "22:19:39",
+        "ts": 1794147579.0750818,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      }
+    },
+    "paths": {
+      "/": 31,
+      "/class": 11,
+      "/class/notice": 17,
+      "/wp-login.php": 2,
+      "/class/files": 11,
+      "/class/edit": 6,
+      "/class/dl": 4
+    }
+  },
+  "2026-11-09": {
+    "pv": 10,
+    "hours": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      9,
+      1,
+      0
+    ],
+    "ips": {
+      "127.0.0.1": {
+        "first": "21:17:40",
+        "hits": 7,
+        "last": "21:33:41",
+        "ts": 1794231221.3881645,
+        "ua": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowe"
+      },
+      "123.90.22.93": {
+        "first": "21:19:14",
+        "hits": 2,
+        "last": "22:24:51",
+        "ts": 1794234291.4099154,
+        "ua": "Dalvik/2.1.0 (Linux; U; Android 15; PGZ110 Build/AP3A.240617"
+      },
+      "81.71.101.106": {
+        "first": "21:44:49",
+        "hits": 1,
+        "last": "21:44:49",
+        "ts": 1794231889.370178,
+        "ua": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) Apple"
+      }
+    },
+    "paths": {
+      "/": 5,
+      "/class": 2,
+      "/class/notice": 2,
+      "/class/edit": 1
+    }
+  },
+  "2026-11-10": {
+    "pv": 212,
+    "hours": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      5,
+      0,
+      1,
+      0,
+      8,
+      1,
+      4,
+      5,
+      13,
+      3,
+      0,
+      1,
+      2,
+      147,
+      0,
+      0,
+      19,
+      2
+    ],
+    "ips": {
+      "123.90.22.93": {
+        "first": "05:16:44",
+        "hits": 7,
+        "last": "23:13:38",
+        "ts": 1794323618.924751,
+        "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML"
+      },
+      "127.0.0.1": {
+        "first": "06:17:07",
+        "hits": 30,
+        "last": "23:01:49",
+        "ts": 1794322909.9588764,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "209.38.44.60": {
+        "first": "08:15:54",
+        "hits": 1,
+        "last": "08:15:54",
+        "ts": 1794269754.0794516,
+        "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l"
+      },
+      "58.63.47.101": {
+        "first": "10:26:09",
+        "hits": 7,
+        "last": "15:14:33",
+        "ts": 1794294873.9157934,
+        "ua": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 "
+      },
+      "120.238.101.238": {
+        "first": "10:40:41",
+        "hits": 1,
+        "last": "10:40:41",
+        "ts": 1794278441.266257,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "34.118.122.200": {
+        "first": "11:44:13",
+        "hits": 1,
+        "last": "11:44:13",
+        "ts": 1794282253.8065326,
+        "ua": "Mozilla/5.0 (iPhone13,2; U; CPU iPhone OS 14_0 like Mac OS X"
+      },
+      "81.196.20.141": {
+        "first": "12:52:43",
+        "hits": 1,
+        "last": "12:52:43",
+        "ts": 1794286363.6153703,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "66.249.69.193": {
+        "first": "12:53:54",
+        "hits": 1,
+        "last": "12:53:54",
+        "ts": 1794286434.294031,
+        "ua": "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) Ap"
+      },
+      "34.158.225.53": {
+        "first": "13:17:48",
+        "hits": 1,
+        "last": "13:17:48",
+        "ts": 1794287868.2536426,
+        "ua": "Mozilla/5.0 (iPhone13,2; U; CPU iPhone OS 14_0 like Mac OS X"
+      },
+      "59.82.135.244": {
+        "first": "14:32:03",
+        "hits": 9,
+        "last": "14:32:15",
+        "ts": 1794292335.3277376,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; WOW64; x64) AppleWebKit/537.36"
+      },
+      "59.82.135.222": {
+        "first": "14:32:08",
+        "hits": 4,
+        "last": "14:32:13",
+        "ts": 1794292333.9643986,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; WOW64; x64) AppleWebKit/537.36"
+      },
+      "34.118.120.178": {
+        "first": "15:22:05",
+        "hits": 1,
+        "last": "15:22:05",
+        "ts": 1794295325.4523985,
+        "ua": "Mozilla/5.0 (iPhone13,2; U; CPU iPhone OS 14_0 like Mac OS X"
+      },
+      "205.169.39.27": {
+        "first": "17:16:05",
+        "hits": 1,
+        "last": "17:16:05",
+        "ts": 1794302165.0276837,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "152.32.173.139": {
+        "first": "19:01:20",
+        "hits": 147,
+        "last": "19:01:38",
+        "ts": 1794308498.5213785,
+        "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) Apple"
+      }
+    },
+    "paths": {
+      "/": 53,
+      "/class": 2,
+      "/api/visitor/captcha/s": 2,
+      "/chat/index/index.html": 1,
+      "/api/mobile/service/adv": 1,
+      "/mytio/config/base.tio_x": 1,
+      "/public/api/index/config": 2,
+      "/api/contract_config/get": 2,
+      "/api/banner": 2,
+      "/s_api/basic/download/info": 1,
+      "/api/landing/check": 1,
+      "/api/system/customer-service": 1,
+      "/api/v6/Comm/getVersionInfoV4": 1,
+      "/forerest/user/custSrv/findOne": 1,
+      "/addons/ltwl_paibao_dx/core/web/": 2,
+      "/h5": 1,
+      "/wap": 1,
+      "/index/login": 1,
+      "/api/": 1,
+      "/h5/": 1,
+      "/d/a": 1,
+      "/pc/": 1,
+      "/a/": 1,
+      "/vip": 1,
+      "/v2": 1,
+      "/mt5/": 1,
+      "/h5a": 1,
+      "/admin": 1,
+      "/syn/": 1,
+      "/login": 1,
+      "/html/": 1,
+      "/im/h5/": 1,
+      "/1.html": 1,
+      "/zz.php": 1,
+      "/chat/1": 1,
+      "/zh-cn/": 1,
+      "/wap/": 1,
+      "/pc.html": 1,
+      "/api/c/a": 1,
+      "/mobile/": 1,
+      "/bt.html": 1,
+      "/platform": 1,
+      "/api/init": 1,
+      "/site/info": 1,
+      "/360.html": 1,
+      "/api/pub/1": 1,
+      "/categories": 1,
+      "/index.html": 1,
+      "/code1.html": 1,
+      "/yongxing/": 1,
+      "/api/config": 1,
+      "/api/events": 1,
+      "/100000/apk": 1,
+      "/api/health": 1,
+      "/js/a.script": 1,
+      "/shouye.html": 1,
+      "/CCB/ccb.php": 1,
+      "/config.json": 1,
+      "/msg_gateway": 1,
+      "/apis/globals": 1,
+      "/api/sys/info": 1,
+      "/h5/newt.html": 1,
+      "/app-Poteplus": 1,
+      "/fePublicInfo/": 1,
+      "/im/App/config": 1,
+      "/api/v1/config": 1,
+      "/kdata/product": 1,
+      "/api/stock/one": 1,
+      "/app-Poteplus/": 1,
+      "/checkCode": 1,
+      "/Xianyu_goods/": 1,
+      "/Home/Index/api": 1,
+      "/index.php/sign": 1,
+      "/ping/main.html": 1,
+      "/addons/fastim/": 1,
+      "/static/pz.json": 1,
+      "/api/home-links": 1,
+      "/api/apps/config": 1,
+      "/api/index/index": 1,
+      "/api/index/goods": 1,
+      "/pc/site/android": 1,
+      "/friendGroup/list": 1,
+      "/api/index/config": 1,
+      "/api/product/list": 1,
+      "/appxz/index.html": 1,
+      "/queryVersion.php": 1,
+      "/public/getConfig": 1,
+      "/mobile/lists.html": 1,
+      "/api/app/indexList": 1,
+      "/mobile/index/home": 1,
+      "/api/Home/videoNew": 1,
+      "/kdata/selectMqUrl": 1,
+      "/mobile/preference": 1,
+      "/pub-api-2/healthy": 1,
+      "/api/chat/messages": 1,
+      "/api/uploads/apimap": 1,
+      "/qishui/qishui.html": 1,
+      "/home/realtime/data": 1,
+      "/api/public/setting": 1,
+      "/api/v1/web/history": 1,
+      "/api/distribution/1": 1,
+      "/api/site/getInfo.do": 1,
+      "/api/v1/setting/main": 1,
+      "/wap-api/banner/list": 1,
+      "/api/app/home-config": 1,
+      "/api/getWebSiteConfig": 1,
+      "/data/json/config.json": 1,
+      "/api/user/ismustmobile": 1,
+      "/index/home/login.html": 1,
+      "/iexchange/webtrader/": 1,
+      "/api/index/productshow": 1,
+      "/api/vue/common/config": 1,
+      "/api/publics/text_info": 1,
+      "/apix/tongchengyue/tags": 1,
+      "/api/Index/getHome": 1,
+      "/api/public/config/site": 1,
+      "/static/voice/default.wav": 1,
+      "/api/common/getBaseConfig": 1,
+      "/common/pub/getSystemInfo": 1,
+      "/h5/customer/announce/list": 1,
+      "/index/index/updateUserInfo": 1,
+      "/portal/index/protocol.html": 1,
+      "/api/pub/ban-redirect-check": 1,
+      "/memberapi/system/config/get": 1,
+      "/index/Common/getArticleList": 1,
+      "/template/mb/lang/text-zh.json": 1,
+      "/api/common/menus": 1,
+      "/api/prod-api/home/notice/list": 1,
+      "/api/common.publics/configData": 1,
+      "/getConfig/getArticle.do": 1,
+      "/api/app/getserviceinfo": 1,
+      "/api/standalone/app": 1,
+      "/admin/webadmin.php": 1,
+      "/api/seller/index/GetSellerConfigAll": 1,
+      "/api/pay/info": 1,
+      "/wap/api/exchangerateuserconfig!get.action": 1,
+      "/api/api/exchangerateuserconfig!get.action": 1,
+      "/client/api/findConfigByKey": 1,
+      "/@vite/client": 16
+    }
+  },
+  "2026-11-11": {
+    "pv": 26,
+    "hours": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      3,
+      1,
+      4,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      8,
+      2,
+      1
+    ],
+    "ips": {
+      "123.90.22.93": {
+        "first": "00:58:41",
+        "hits": 2,
+        "last": "22:42:18",
+        "ts": 1794408138.6591973,
+        "ua": "Dalvik/2.1.0 (Linux; U; Android 15; PGZ110 Build/AP3A.240617"
+      },
+      "210.21.60.58": {
+        "first": "07:16:12",
+        "hits": 2,
+        "last": "12:40:47",
+        "ts": 1794372047.1546016,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "unknown": {
+        "first": "09:50:44",
+        "hits": 1,
+        "last": "09:50:44",
+        "ts": 1794361844.428025,
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/"
+      },
+      "58.63.47.101": {
+        "first": "10:23:02",
+        "hits": 5,
+        "last": "13:33:31",
+        "ts": 1794375211.0034401,
+        "ua": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 "
+      },
+      "120.238.101.238": {
+        "first": "10:33:25",
+        "hits": 1,
+        "last": "10:33:25",
+        "ts": 1794364405.0663738,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "54.224.92.184": {
+        "first": "11:10:24",
+        "hits": 1,
+        "last": "11:10:24",
+        "ts": 1794366624.182341,
+        "ua": "okhttp/5.3.0"
+      },
+      "34.116.227.188": {
+        "first": "12:44:41",
+        "hits": 1,
+        "last": "12:44:41",
+        "ts": 1794372281.3394835,
+        "ua": "Mozilla/5.0 (iPhone13,2; U; CPU iPhone OS 14_0 like Mac OS X"
+      },
+      "81.196.20.142": {
+        "first": "12:50:00",
+        "hits": 1,
+        "last": "12:50:00",
+        "ts": 1794372600.8988178,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "119.63.197.151": {
+        "first": "13:17:50",
+        "hits": 1,
+        "last": "13:17:50",
+        "ts": 1794374270.4476974,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "127.0.0.1": {
+        "first": "13:19:51",
+        "hits": 4,
+        "last": "21:35:51",
+        "ts": 1794404151.68757,
+        "ua": "AndroidDownloadManager/14 (Linux; U; Android 14; M2011K2C Bu"
+      },
+      "103.42.50.225": {
+        "first": "21:25:13",
+        "hits": 2,
+        "last": "21:36:09",
+        "ts": 1794404169.171292,
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/"
+      },
+      "72.13.62.5": {
+        "first": "21:58:34",
+        "hits": 3,
+        "last": "21:58:37",
+        "ts": 1794405517.977037,
+        "ua": "Mozilla/5.0 (compatible; ips-agent)"
+      },
+      "32.193.31.241": {
+        "first": "22:22:08",
+        "hits": 1,
+        "last": "22:22:08",
+        "ts": 1794406928.9185107,
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/"
+      },
+      "181.41.206.203": {
+        "first": "23:17:41",
+        "hits": 1,
+        "last": "23:17:41",
+        "ts": 1794410261.8571017,
+        "ua": "Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Fir"
+      }
+    },
+    "paths": {
+      "/": 21,
+      "/%E6%AF%8D%E4%B8%8A%E6%94%BB%E7%95%A5%EF%BC%88%E5%85%A81.1--28.7%E5%AE%8C%E6%9C%AC%EF%BC%89.txt": 2,
+      "/robots.txt": 2,
+      "/class": 1
+    }
+  },
+  "2026-11-12": {
+    "pv": 45,
+    "hours": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      11,
+      4,
+      0,
+      2,
+      1,
+      2,
+      4,
+      0,
+      3,
+      7,
+      8,
+      2,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "ips": {
+      "149.102.234.42": {
+        "first": "07:58:14",
+        "hits": 11,
+        "last": "07:58:35",
+        "ts": 1794441515.2716084,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "195.2.70.227": {
+        "first": "08:20:00",
+        "hits": 1,
+        "last": "08:20:00",
+        "ts": 1794442800.1799364,
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/"
+      },
+      "104.168.69.100": {
+        "first": "08:20:01",
+        "hits": 1,
+        "last": "08:20:01",
+        "ts": 1794442801.675285,
+        "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0_3 like Mac OS X) App"
+      },
+      "54.68.150.15": {
+        "first": "08:36:05",
+        "hits": 1,
+        "last": "08:36:05",
+        "ts": 1794443765.3116503,
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/"
+      },
+      "unknown": {
+        "first": "08:49:25",
+        "hits": 1,
+        "last": "08:49:25",
+        "ts": 1794444565.9772599,
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/"
+      },
+      "58.63.47.101": {
+        "first": "10:21:56",
+        "hits": 9,
+        "last": "17:11:48",
+        "ts": 1794474708.9895935,
+        "ua": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 "
+      },
+      "174.138.32.19": {
+        "first": "11:11:56",
+        "hits": 1,
+        "last": "11:11:56",
+        "ts": 1794453116.4040132,
+        "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l"
+      },
+      "210.21.60.58": {
+        "first": "12:30:36",
+        "hits": 4,
+        "last": "18:00:46",
+        "ts": 1794477646.33664,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "81.196.20.141": {
+        "first": "12:55:36",
+        "hits": 1,
+        "last": "12:55:36",
+        "ts": 1794459336.9999363,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "127.0.0.1": {
+        "first": "13:09:26",
+        "hits": 10,
+        "last": "20:33:14",
+        "ts": 1794486794.5042486,
+        "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML"
+      },
+      "34.116.227.132": {
+        "first": "13:43:00",
+        "hits": 1,
+        "last": "13:43:00",
+        "ts": 1794462180.543491,
+        "ua": "Mozilla/5.0 (iPhone13,2; U; CPU iPhone OS 14_0 like Mac OS X"
+      },
+      "120.238.101.238": {
+        "first": "15:02:19",
+        "hits": 2,
+        "last": "15:04:06",
+        "ts": 1794467046.0684624,
+        "ua": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 "
+      },
+      "220.202.112.101": {
+        "first": "17:54:50",
+        "hits": 1,
+        "last": "17:54:50",
+        "ts": 1794477290.546443,
+        "ua": "Mozilla/5.082584686 Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_"
+      },
+      "195.133.61.97": {
+        "first": "18:36:30",
+        "hits": 1,
+        "last": "18:36:30",
+        "ts": 1794479790.8975537,
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/"
+      }
+    },
+    "paths": {
+      "/": 36,
+      "/wp-includes/wlwmanifest.xml": 1,
+      "/web/wp-includes/wlwmanifest.xml": 1,
+      "/website/wp-includes/wlwmanifest.xml": 1,
+      "/news/wp-includes/wlwmanifest.xml": 1,
+      "/2019/wp-includes/wlwmanifest.xml": 1,
+      "/wp1/wp-includes/wlwmanifest.xml": 1,
+      "/media/wp-includes/wlwmanifest.xml": 1,
+      "/site/wp-includes/wlwmanifest.xml": 1,
+      "/sito/wp-includes/wlwmanifest.xml": 1
+    }
+  },
+  "2026-11-13": {
+    "pv": 99,
+    "hours": [
+      0,
+      0,
+      0,
+      0,
+      6,
+      47,
+      0,
+      0,
+      2,
+      0,
+      7,
+      0,
+      9,
+      7,
+      2,
+      0,
+      0,
+      0,
+      10,
+      2,
+      2,
+      0,
+      4,
+      1
+    ],
+    "ips": {
+      "123.90.22.93": {
+        "first": "04:31:28",
+        "hits": 6,
+        "last": "05:40:55",
+        "ts": 1794519655.7179515,
+        "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 12_5_7 like Mac OS X) App"
+      },
+      "1.83.125.239": {
+        "first": "04:32:15",
+        "hits": 1,
+        "last": "04:32:15",
+        "ts": 1794515535.091734,
+        "ua": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) Apple"
+      },
+      "212.11.41.213": {
+        "first": "05:31:42",
+        "hits": 1,
+        "last": "05:31:42",
+        "ts": 1794519102.8329933,
+        "ua": "domain-census/1.0 (research; one-request-per-domain)"
+      },
+      "35.185.155.177": {
+        "first": "05:33:01",
+        "hits": 44,
+        "last": "05:33:16",
+        "ts": 1794519196.9134405,
+        "ua": "Mozilla/5.0 (compatible; Hunyuan/1.0; +https://hunyuan.tence"
+      },
+      "36.32.3.148": {
+        "first": "05:40:56",
+        "hits": 1,
+        "last": "05:40:56",
+        "ts": 1794519656.849003,
+        "ua": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) Apple"
+      },
+      "unknown": {
+        "first": "08:16:57",
+        "hits": 1,
+        "last": "08:16:57",
+        "ts": 1794529017.2414074,
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/"
+      },
+      "134.209.29.10": {
+        "first": "08:44:00",
+        "hits": 1,
+        "last": "08:44:00",
+        "ts": 1794530640.80971,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "135.148.195.12": {
+        "first": "10:15:52",
+        "hits": 1,
+        "last": "10:15:52",
+        "ts": 1794536152.335342,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101 Firef"
+      },
+      "58.63.47.101": {
+        "first": "10:24:14",
+        "hits": 9,
+        "last": "13:15:05",
+        "ts": 1794546905.3846016,
+        "ua": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 "
+      },
+      "223.167.168.194": {
+        "first": "10:25:28",
+        "hits": 1,
+        "last": "10:25:28",
+        "ts": 1794536728.4971786,
+        "ua": "Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601"
+      },
+      "127.0.0.1": {
+        "first": "10:36:43",
+        "hits": 16,
+        "last": "23:36:38",
+        "ts": 1794584198.9937203,
+        "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML"
+      },
+      "141.11.86.210": {
+        "first": "10:54:53",
+        "hits": 1,
+        "last": "10:54:53",
+        "ts": 1794538493.2766109,
+        "ua": "Mozilla/5.0"
+      },
+      "210.21.60.58": {
+        "first": "12:29:39",
+        "hits": 2,
+        "last": "12:31:20",
+        "ts": 1794544280.2431486,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "205.169.39.210": {
+        "first": "12:30:36",
+        "hits": 2,
+        "last": "12:30:41",
+        "ts": 1794544241.553791,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "34.116.202.124": {
+        "first": "12:31:38",
+        "hits": 1,
+        "last": "12:31:38",
+        "ts": 1794544298.4872324,
+        "ua": "Mozilla/5.0 (iPhone13,2; U; CPU iPhone OS 14_0 like Mac OS X"
+      },
+      "81.196.20.141": {
+        "first": "12:53:43",
+        "hits": 1,
+        "last": "12:53:43",
+        "ts": 1794545623.164161,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "167.99.14.118": {
+        "first": "13:12:31",
+        "hits": 1,
+        "last": "13:12:31",
+        "ts": 1794546751.8243775,
+        "ua": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Fir"
+      },
+      "34.118.27.94": {
+        "first": "13:43:13",
+        "hits": 1,
+        "last": "13:43:13",
+        "ts": 1794548593.1693184,
+        "ua": "Mozilla/5.0 (iPhone13,2; U; CPU iPhone OS 14_0 like Mac OS X"
+      },
+      "205.169.39.50": {
+        "first": "13:43:41",
+        "hits": 1,
+        "last": "13:43:41",
+        "ts": 1794548621.8806868,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "34.116.133.149": {
+        "first": "14:10:25",
+        "hits": 1,
+        "last": "14:10:25",
+        "ts": 1794550225.0168552,
+        "ua": "Mozilla/5.0 (iPhone13,2; U; CPU iPhone OS 14_0 like Mac OS X"
+      },
+      "130.61.227.149": {
+        "first": "18:14:05",
+        "hits": 1,
+        "last": "18:14:05",
+        "ts": 1794564845.405315,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "169.58.63.131": {
+        "first": "19:05:14",
+        "hits": 1,
+        "last": "19:05:14",
+        "ts": 1794567914.44367,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "45.92.84.103": {
+        "first": "19:11:34",
+        "hits": 1,
+        "last": "19:11:34",
+        "ts": 1794568294.8613386,
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:70.0) Gecko"
+      },
+      "120.230.107.230": {
+        "first": "22:45:08",
+        "hits": 2,
+        "last": "22:46:22",
+        "ts": 1794581182.3698227,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "153.0.250.98": {
+        "first": "22:46:24",
+        "hits": 1,
+        "last": "22:46:24",
+        "ts": 1794581184.5958476,
+        "ua": "Mozilla/4.038533357 Mozilla/4.0 (compatible; MSIE 7.0; Windo"
+      }
+    },
+    "paths": {
+      "/": 48,
+      "/sitemap.xml": 1,
+      "/class": 4,
+      "/ngsw.json": 1,
+      "/config/settings.py": 1,
+      "/settings/billing": 1,
+      "/settings": 1,
+      "/graphql": 1,
+      "/settings/team": 1,
+      "/settings/integrations": 1,
+      "/admin/users": 1,
+      "/dashboard": 1,
+      "/webhooks": 1,
+      "/playground": 1,
+      "/admin": 1,
+      "/account": 1,
+      "/pricing": 1,
+      "/settings/api-keys": 1,
+      "/onboarding": 1,
+      "/invite": 1,
+      "/auth": 1,
+      "/swagger": 1,
+      "/login": 1,
+      "/integrations": 1,
+      "/console": 1,
+      "/organization": 1,
+      "/checkout": 1,
+      "/internal": 1,
+      "/billing": 1,
+      "/api-keys": 1,
+      "/api-docs": 1,
+      "/settings/security": 1,
+      "/settings/developer": 1,
+      "/settings/webhooks": 1,
+      "/debug": 1,
+      "/store/.env": 1,
+      "/.env_1": 1,
+      "/.gitconfig": 1,
+      "/config/.env.production": 1,
+      "/css../.env": 1,
+      "/fly.toml": 1,
+      "/api/.env": 1,
+      "/src/.env": 1,
+      "/apps/.env": 1,
+      "/class/files": 2,
+      "/class/notice": 2,
+      "/class/edit": 1
+    }
+  },
+  "2026-11-14": {
+    "pv": 30,
+    "hours": [
+      3,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2,
+      15,
+      0,
+      2,
+      2,
+      2,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "ips": {
+      "127.0.0.1": {
+        "first": "00:51:32",
+        "hits": 4,
+        "last": "13:29:56",
+        "ts": 1794634196.5629604,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "113.215.189.69": {
+        "first": "00:55:04",
+        "hits": 1,
+        "last": "00:55:04",
+        "ts": 1794588904.544886,
+        "ua": "Mozilla/5.0 (Linux; Android 9; ASUS_X00TD; Flow) AppleWebKit"
+      },
+      "113.215.189.79": {
+        "first": "00:55:12",
+        "hits": 1,
+        "last": "00:55:12",
+        "ts": 1794588912.2920344,
+        "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l"
+      },
+      "120.230.107.230": {
+        "first": "05:23:06",
+        "hits": 4,
+        "last": "10:39:30",
+        "ts": 1794623970.7317564,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "113.215.189.102": {
+        "first": "10:57:59",
+        "hits": 10,
+        "last": "10:58:11",
+        "ts": 1794625091.201297,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; WOW64; x64) AppleWebKit/537.36"
+      },
+      "113.215.189.100": {
+        "first": "10:58:04",
+        "hits": 3,
+        "last": "10:58:10",
+        "ts": 1794625090.2080986,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; WOW64; x64) AppleWebKit/537.36"
+      },
+      "45.92.84.203": {
+        "first": "12:43:27",
+        "hits": 1,
+        "last": "12:43:27",
+        "ts": 1794631407.509957,
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:70.0) Gecko"
+      },
+      "81.196.20.141": {
+        "first": "12:56:15",
+        "hits": 1,
+        "last": "12:56:15",
+        "ts": 1794632175.302734,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "4.43.184.113": {
+        "first": "13:04:34",
+        "hits": 1,
+        "last": "13:04:34",
+        "ts": 1794632674.3651955,
+        "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l"
+      },
+      "84.54.71.191": {
+        "first": "14:09:01",
+        "hits": 1,
+        "last": "14:09:01",
+        "ts": 1794636541.4207141,
+        "ua": "Python/3.12 aiohttp/3.14.3"
+      },
+      "196.207.235.175": {
+        "first": "14:10:26",
+        "hits": 1,
+        "last": "14:10:26",
+        "ts": 1794636626.3886611,
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/"
+      },
+      "35.253.67.164": {
+        "first": "15:08:11",
+        "hits": 1,
+        "last": "15:08:11",
+        "ts": 1794640091.8020618,
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      "31.209.101.29": {
+        "first": "16:26:46",
+        "hits": 1,
+        "last": "16:26:46",
+        "ts": 1794644806.0169492,
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:70.0) Gecko"
+      }
+    },
+    "paths": {
+      "/": 28,
+      "/class": 2
+    }
+  }
+}

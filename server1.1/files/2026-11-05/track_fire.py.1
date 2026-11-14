@@ -1,0 +1,174 @@
+"""按任务顺序执行：调整舵机俯仰 → 跟踪指定标签 → 执行动作（激光 / 发射）
+
+任务列表不再写死在代码里，而是从 targets_config.json 读取，
+可用 calib_gui.py 可视化配置每个标签的类型、角度、瞄点偏移。
+
+运行方式：
+    python track_fire.py            按配置顺序执行全部任务
+    python track_fire.py --tag 5    只执行标签 5 的任务
+    python track_fire.py --list     只打印任务列表（不连接硬件）
+
+操作：在摄像头窗口按 Q 或 Esc 退出。
+"""
+
+import argparse
+import time
+
+from board import board
+from vision import vision
+from config import SERIAL_PORT, VOLTAGE_POLARITY
+import config_io
+
+GIMBAL = config_io.load_config()["gimbal"]   # 云台速度/居中参数
+CENTER_HALF_WIDTH = GIMBAL["center_half_width"]  # 多少像素以内算"居中"
+LOCK_FRAMES = GIMBAL["lock_frames"]          # 连续多少帧居中才算锁定
+DIRECTION = GIMBAL["direction"]              # 云台转向系数
+
+
+def motor_speed(error):
+    """根据偏差算出云台速度（两段式：远快近慢，居中停）。
+
+    输入：error 偏差（标签位置 − 期望位置）
+    输出：速度；偏差在居中范围内时返回 0。
+    """
+
+    if abs(error) <= CENTER_HALF_WIDTH:
+        return 0                                # 已居中
+    if abs(error) > GIMBAL["slow_zone_px"]:
+        speed = GIMBAL["track_speed"]           # 偏差大，快速跟踪
+    else:
+        speed = GIMBAL["slow_speed"]            # 接近期望位置，减速防漏检
+    if error > 0:
+        return -speed * DIRECTION * VOLTAGE_POLARITY   # 标签偏右，右转
+    return speed * DIRECTION * VOLTAGE_POLARITY        # 标签偏左，左转
+
+
+def execute_action(target, laser_seconds, settle_seconds):
+    """执行任务指定的动作。
+
+    输入：target 靶配置；laser_seconds 激光持续秒数；
+         settle_seconds 发射后等待秒数
+    输出：无；动作名未知时打印提示。
+    """
+
+    if target["type"] == "laser":
+        board.laser_on_for(laser_seconds)
+        print(f"    动作：激光照射 {laser_seconds} 秒")
+    elif target["type"] == "fire":
+        board.fire_once()
+        time.sleep(settle_seconds)   # 留时间给发射机构完成动作
+        print("    动作：发射一次")
+    else:
+        print(f"    未知动作: {target['type']}")
+
+
+def track_tag(camera, detector, tag_id, offset):
+    """跟踪指定 id 的标签直到连续多帧居中。
+
+    输入：camera/detector 视觉对象；tag_id 目标标签 id；
+         offset 期望的标签水平位置（相对画面中心的像素偏移，画面中心为 0）
+    输出：True 已锁定；False 用户按 Q/Esc 退出。
+    """
+
+    last_speed = 0    # 上一次发送的速度（0 表示停止）
+    centered = 0      # 连续居中的帧数
+    while True:
+        frame, tags = vision.read_tags(camera, detector)
+        if frame is None:
+            continue
+
+        center_x = frame.shape[1] // 2                          # 画面中心
+        target = next((t for t in tags if t.tag_id == tag_id), None)  # 找目标标签
+
+        if target is None:
+            centered = 0   # 目标丢失，锁定计数清零
+            speed = GIMBAL["search_speed"] * DIRECTION * VOLTAGE_POLARITY
+            status = f"标签 {tag_id}：未发现，搜索中"
+        else:
+            # 偏差 = 测量值（标签位置）− 期望值（画面中心 + 任务指定的 offset）
+            error = int(target.center[0] - center_x - offset)
+            speed = motor_speed(error)
+            status = f"标签 {tag_id}：偏差 {error}"
+
+            if speed == 0:   # 偏差在阈值内
+                centered += 1
+                status = f"{status} | 锁定 {centered}/{LOCK_FRAMES}"
+                if centered >= LOCK_FRAMES:   # 连续多帧居中，认为已稳定锁定
+                    print(f"{status} |=> 锁定目标")
+                    board.set_motor_b(0)   # 云台停止
+                    return True
+            else:
+                centered = 0
+
+        # 只在速度变化时发送命令
+        if speed != last_speed:
+            board.set_motor_b(speed)
+            last_speed = speed
+            print(f"{status} |=> 发送指令 {speed}")
+
+        vision.show_frame(frame, tags, status)
+        if vision.is_quit_key(vision.wait_key()):
+            print("按 Q 或 Esc 退出。")
+            return False
+
+
+def print_tasks(targets):
+    """打印任务列表。"""
+
+    print(f"共 {len(targets)} 个任务：")
+    for i, t in enumerate(targets, 1):
+        print(f"  {i}. 标签 {t['tag']}（{t['name']}）  角度 {t['angle']}  "
+              f"偏移 {t['offset']}  动作 {t['type']}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="按配置执行打靶任务")
+    parser.add_argument("--tag", type=int, help="只执行指定标签的任务")
+    parser.add_argument("--list", action="store_true", help="只打印任务列表")
+    args = parser.parse_args()
+
+    config = config_io.load_config()
+    targets = [t for t in config["targets"] if t["tag"] > 0]
+    if args.tag is not None:
+        targets = [t for t in targets if t["tag"] == args.tag]
+        if not targets:
+            print(f"配置里没有标签 {args.tag} 的任务。")
+            return
+
+    print_tasks(targets)
+    if args.list:
+        return
+    if not targets:
+        print("没有可执行的任务，请先用 calib_gui.py 配置。")
+        return
+
+    detector = vision.create_detector()   # 创建标签检测器
+    camera = vision.open_camera()         # 打开摄像头
+
+    try:
+        board.connect(SERIAL_PORT)        # 连接控制板
+        board.set_servo_angle(config["servo"]["default_angle"])  # 云台初始角度
+        board.stop_motor_b()              # 一开始云台不动
+        print("云台已就绪，开始按顺序执行任务。")
+
+        for i, task in enumerate(targets, 1):
+            print(f"\n=== 任务 {i}/{len(targets)}：标签 {task['tag']}，"
+                  f"舵机角度 {task['angle']}，动作 {task['type']} ===")
+            board.set_servo_angle(task["angle"])  # 调整装置俯仰角度
+            if not track_tag(camera, detector, task["tag"], task["offset"]):  # 跟踪标签直到锁定
+                break
+            execute_action(task, config["laser"]["duration_seconds"],
+                           config["fire"]["settle_seconds"])  # 锁定后执行动作
+        else:
+            print("\n所有任务完成。")
+    finally:
+        # 收尾：不管正常退出还是出错，都会执行
+        if board.is_connected():   # 已连接才需要停机和断开
+            board.stop_motor_b()
+            board.disconnect()
+        camera.release()           # 关掉摄像头
+        vision.close_windows()     # 关掉窗口
+
+
+if __name__ == "__main__":
+    main()

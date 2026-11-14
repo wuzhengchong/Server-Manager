@@ -1,0 +1,1116 @@
+"""tkinter 主控配置界面（配置程序入口）。
+
+单屏布局（无需切换页签）：
+    左列：摄像头预览 + 自动搜索 + 串口连接
+    中列：舵机（垂直）角度 + 云台（水平）控制 + 发射机构
+    右列：靶点配置 + 全局参数
+
+核心流程：开始搜索 → 云台慢转 → 识别到标签自动对准停下（也可手动点动微调）
+→ 调整垂直角度（步长可调）→ 空格记录【摄像头中心与标签的横向偏差 + 当前舵机角】
+→ 全部写回 targets_config.json，track_fire.py 直接按该偏差和角度执行。
+
+新增：识别1/2/3二维码自动缓存识别时间+舵机角度；按F发射时记录间隔时间、发射角度
+键盘按键（在主窗口直接按，输入框聚焦时无效）：
+    W / S   舵机 ±步长 度        A / D   云台点动左 / 右
+    O / P   激光开 / 关          F / L   发射 / 装填
+    0       全部停止             1 / 2   电机 A 正 / 反转一次
+    3 / 4   电机 B 正 / 反转一次  6 / 9   舵机转 60 / 90 度
+    空格    记录偏差 + 角度到选中的靶      Q 退出
+
+运行：.venv\\Scripts\\python.exe calib_gui.py
+"""
+
+import base64
+import os
+import threading
+import time
+import tkinter as tk
+from tkinter import messagebox, scrolledtext, ttk
+
+import cv2
+
+from board import board
+from config import CAMERA_INDEX, SERIAL_PORT, VOLTAGE_POLARITY
+from vision import vision
+import config_io
+
+PREVIEW_W = 640          # 预览窗口宽（画面从 1280 缩小，加快 PNG 编码）
+PREVIEW_H = 360          # 预览窗口高
+UI_INTERVAL_MS = 80      # 界面刷新周期（毫秒）
+
+# 自动搜索模式
+MODE_MANUAL = "手动"
+MODE_SEARCH = "搜索中"
+MODE_TRACK = "对准中"
+MODE_STOP = "已对准"
+
+
+# ============================ 摄像头后台线程 ============================
+class CameraWorker(threading.Thread):
+    """后台持续读帧并识别标签，主界面只取最新结果。"""
+    """
+"buzzer": {
+        "default_ms": 150,
+        "default_hz": 1200
+    }
+    """
+    def __init__(self, index=1):
+        super().__init__(daemon=True)
+        self.index = index        # 摄像头编号
+        self.lock = threading.Lock()
+        self.frame = None          # 最新一帧（彩色 BGR）
+        self.tags = []             # 最新一帧识别到的标签
+        self.active = False        # 线程是否在运行
+        self.error = None          # 启动失败原因
+
+    def start_camera(self, index):
+        """用指定编号启动采集线程（已在运行则忽略）。"""
+
+        if self.active:
+            return
+        self.index = index
+        self.error = None
+        self.active = True
+        super().start()
+
+    def stop_camera(self):
+        """请求停止采集线程。"""
+
+        self.active = False
+
+    def snapshot(self):
+        """取最新一帧和标签的副本。"""
+
+        with self.lock:
+            if self.frame is None:
+                return None, []
+            return self.frame.copy(), list(self.tags)
+
+    def run(self):
+        """线程主体：开摄像头 → 循环读帧识别 → 退出时释放。"""
+
+        try:
+            camera = vision.open_camera(self.index)
+            detector = vision.create_detector()
+        except Exception as exc:
+            self.error = str(exc)
+            self.active = False
+            return
+        while self.active:
+            frame, tags = vision.read_tags(camera, detector)
+            with self.lock:
+                self.frame = frame
+                self.tags = tags
+        camera.release()
+        with self.lock:
+            self.frame = None
+            self.tags = []
+
+
+# ============================ 主界面 ============================
+class CalibApp:
+    """主控配置界面。"""
+    def beep(self):
+        """短促蜂鸣一声（使用SD指令）"""
+        ms = self.config["buzzer"]["default_ms"]
+        hz = self.config["buzzer"]["default_hz"]
+        if board.is_connected():
+            try:
+                board.buzzer_sd(ms, hz)
+            except Exception:
+                pass
+
+    def buzzer_sd_trigger(self):
+        """SD [ms][Hz] 蜂鸣指令，读取UI参数下发"""
+        ms = self.get_int(self.buzzer_ms_var, "蜂鸣时长ms")
+        hz = self.get_int(self.buzzer_hz_var, "蜂鸣频率Hz")
+        if ms is None or hz is None:
+            return
+        if ms <= 0 or hz <= 0:
+            self.log("蜂鸣时长、频率必须大于0！")
+            return
+        if self._safe(board.buzzer_sd, ms, hz):
+            self.log(f"下发蜂鸣 SD {ms} {hz}")
+
+
+    def _safe_save_config(self):
+        """安全保存配，捕获IO异常，修复保存失败无提示"""
+        try:
+            config_io._safe_save_config(self.config)
+            return True
+        except Exception as e:
+            messagebox.showerror("配置保存失败", f"写入 targets_config.json 失败：{e}")
+            self.log(f"【ERROR】保存JSON失败：{e}")
+            return False
+
+    def __init__(self, root):
+        self.root = root
+        root.title("打靶主控配置界面")
+        root.minsize(1330, 760)          # 自适应：允许拉伸，只限最小尺寸
+        root.geometry("1420x920")
+        root.protocol("WM_DELETE_WINDOW", self.on_closing)
+
+        config_existed = os.path.exists(config_io.CONFIG_PATH)
+        self.config = config_io.load_config()   # 缺失/损坏时自动创建
+        self.worker = CameraWorker()
+
+        # 自动搜索状态
+        self.auto_mode = MODE_MANUAL
+        self.auto_tag = None       # 正在追踪的标签编号
+        self.centered = 0          # 连续居中帧数
+        self.last_speed = 0        # 上次下发的云台速度
+
+        # 实时偏差：当前追踪标签中心相对摄像头中心的横向像素
+        self.live_tag = None
+        self.live_error = None
+
+        # ========== 新增：1/2/3标签识别计时缓存 key=tag_id ==========
+        self.tag_detect_cache = {}   # {tag_id: {"detect_ts": 时间戳, "detect_angle": 识别时舵机角度}}
+
+        # 全局变量
+        self.servo_var = tk.IntVar(value=self.config["servo"]["default_angle"])
+        self.gimbal_speed_var = tk.IntVar(value=150)   # 云台手动速度
+        self.laser_on = False
+        # ========== 新增蜂鸣器参数 ==========
+        self.buzzer_ms_var = tk.IntVar(value=self.config["buzzer"]["default_ms"])
+        self.buzzer_hz_var = tk.IntVar(value=self.config["buzzer"]["default_hz"])
+
+
+        self._build_layout()
+        self._bind_keys()
+        self.log("界面已就绪。先【连接控制板】，检测并选择摄像头后【开始搜索】。")
+        if not config_existed:
+            self.log(f"未找到配置文件，已自动创建默认配置：{config_io.CONFIG_PATH}")
+        self.root.after(UI_INTERVAL_MS, self._tick)
+        self.root.after(300, self.scan_cameras)   # 启动时自动扫描摄像头
+
+    # ---------- 界面布局 ----------
+    def _build_layout(self):
+        """单屏三列布局，避免切换页签。"""
+
+        top = ttk.Frame(self.root)
+        top.pack(fill="both", expand=True, padx=8, pady=4)
+
+        # 布局：左列摄像头固定 640px 宽（16:9 不被压缩），
+        # 右侧分两个栏目：① 操控（舵机/云台/发射） ② 配置（靶点/全局）
+        top.columnconfigure(0, weight=0, minsize=640)
+        top.columnconfigure(1, weight=1)
+        top.columnconfigure(2, weight=2, minsize=440)
+        top.rowconfigure(0, weight=1)
+
+        # 左列：摄像头预览（固定宽度，随高度等比缩放）
+        left = ttk.Frame(top)
+        left.grid(row=0, column=0, sticky="nsew")
+        self.canvas = tk.Canvas(left, width=640, height=360,
+                                bg="black", highlightthickness=0)
+        self.canvas.pack(fill="both", expand=True)
+        self.status_var = tk.StringVar(value="摄像头未打开")
+        ttk.Label(left, textvariable=self.status_var).pack(anchor="w")
+        self._build_serial_panel(left)
+        self._build_auto_panel(left)
+
+        # 栏目① 操控
+        mid = ttk.LabelFrame(top, text="栏目① 操控（舵机 / 云台 / 发射）")
+        mid.grid(row=0, column=1, sticky="nsew", padx=(8, 0))
+        self._build_servo_panel(mid)
+        self._build_gimbal_panel(mid)
+        self._build_mech_panel(mid)
+
+        # 栏目② 配置
+        right = ttk.LabelFrame(top, text="栏目② 配置（靶点 / 全局参数）")
+        right.grid(row=0, column=2, sticky="nsew", padx=(8, 0))
+        self._build_targets_panel(right)
+        self._build_global_panel(right)
+
+        self.log_text = scrolledtext.ScrolledText(self.root, height=7,
+                                                  state="disabled")
+        self.log_text.pack(fill="both", padx=8, pady=4)
+
+    def _build_serial_panel(self, parent):
+        """串口连接区。"""
+
+        box = ttk.LabelFrame(parent, text="控制板")
+        box.pack(fill="x", pady=2)
+        self.port_var = tk.StringVar(value=SERIAL_PORT)
+        ttk.Label(box, text="串口").grid(row=0, column=0, padx=2)
+        ttk.Entry(box, textvariable=self.port_var, width=8).grid(row=0, column=1)
+        ttk.Button(box, text="连接", width=6,
+                   command=self.connect_board).grid(row=0, column=2, padx=2)
+        ttk.Button(box, text="断开", width=6,
+                   command=self.disconnect_board).grid(row=0, column=3, padx=2)
+
+    def _build_auto_panel(self, parent):
+        """摄像头选择 + 自动搜索区。"""
+
+        box = ttk.LabelFrame(parent, text="摄像头 / 自动搜索（慢转 → 识别 → 对准 → 停）")
+        box.pack(fill="x", pady=2)
+        # ========== 默认摄像头1 ==========
+        self.camera_var = tk.StringVar(value="1")
+        self.camera_combo = ttk.Combobox(box, textvariable=self.camera_var,
+                                         width=6, state="readonly")
+        self.camera_combo.grid(row=0, column=0, padx=2, pady=2)
+        ttk.Button(box, text="检测摄像头", width=10,
+                   command=self.scan_cameras).grid(row=0, column=1, padx=2)
+        ttk.Button(box, text="打开摄像头", width=10,
+                   command=self.open_camera).grid(row=0, column=2, padx=2)
+        ttk.Button(box, text="关闭摄像头", width=10,
+                   command=self.close_camera).grid(row=0, column=3, padx=2)
+
+        self.search_speed_var = tk.IntVar(value=80)
+        ttk.Label(box, text="搜索速度").grid(row=1, column=0, padx=2)
+        ttk.Scale(box, from_=30, to=180, variable=self.search_speed_var,
+                  length=130).grid(row=1, column=1, padx=2)
+        self.speed_label = ttk.Label(box, text="80")
+        self.speed_label.grid(row=1, column=2)
+        ttk.Button(box, text="开始搜索", command=self.start_search).grid(
+            row=1, column=3, padx=2)
+        ttk.Button(box, text="停止自动", command=self.stop_auto).grid(
+            row=1, column=4, padx=2)
+        ttk.Label(box, text="方向反了改全局参数 direction=-1").grid(
+            row=1, column=5, padx=2)
+
+    def scan_cameras(self):
+        """后台扫描可用摄像头编号，填入下拉框。"""
+
+        if getattr(self, "_scanning", False):
+            return
+        self._scanning = True
+        self.camera_combo.configure(values=[self.camera_var.get()])
+        self.log("正在扫描摄像头…")
+
+        def worker():
+            found = []
+            for index in range(6):
+                cap = cv2.VideoCapture(index, cv2.CAP_DSHOW)
+                if cap.isOpened():
+                    found.append(str(index))
+                cap.release()
+            self.root.after(0, self._scan_done, found)
+
+        threading.Thread(target=worker, daemon=True).start()
+
+    def _scan_done(self, found):
+        """扫描结束：更新下拉框并提示。"""
+
+        self._scanning = False
+        if found:
+            self.camera_combo.configure(values=found)
+            if self.camera_var.get() not in found:
+                self.camera_var.set(found[0])
+            self.log(f"检测到摄像头: {', '.join(found)}")
+        else:
+            self.log("未检测到可用摄像头，请检查连接。")
+
+    # ---------- 中列 ----------
+    def _build_servo_panel(self, parent):
+        """舵机（垂直角度）面板：步长可调。"""
+
+        box = ttk.LabelFrame(parent, text="舵机（垂直）角度")
+        box.pack(fill="x", pady=3)
+        row1 = ttk.Frame(box)
+        row1.pack(fill="x", pady=3)
+        ttk.Label(row1, text="角度").pack(side="left")
+        scale = ttk.Scale(row1, from_=0, to=180, variable=self.servo_var,
+                          length=140)
+        scale.pack(side="left", padx=4)
+        scale.bind("<ButtonRelease-1>",
+                   lambda e: self.send_servo(self.servo_var.get()))
+        ttk.Label(row1, textvariable=self.servo_var, width=4).pack(side="left")
+
+        row2 = ttk.Frame(box)
+        row2.pack(pady=2)
+        ttk.Label(row2, text="步长").pack(side="left")
+        self.step_var = tk.IntVar(value=5)
+        ttk.Entry(row2, textvariable=self.step_var, width=4).pack(
+            side="left", padx=3)
+        ttk.Button(row2, text="-1",
+                   command=lambda: self.step_servo(-1)).pack(side="left", padx=1)
+        ttk.Button(row2, text="+1",
+                   command=lambda: self.step_servo(1)).pack(side="left", padx=1)
+        ttk.Button(row2, text="-步长",
+                   command=lambda: self.step_servo(-self._servo_step())).pack(
+            side="left", padx=1)
+        ttk.Button(row2, text="+步长",
+                   command=lambda: self.step_servo(self._servo_step())).pack(
+            side="left", padx=1)
+
+        row3 = ttk.Frame(box)
+        row3.pack(pady=2)
+        ttk.Button(row3, text="60", command=lambda: self.goto_servo(60)).pack(
+            side="left", padx=1)
+        ttk.Button(row3, text="90", command=lambda: self.goto_servo(90)).pack(
+            side="left", padx=1)
+        ttk.Button(row3, text="空格：记录偏差+角度",
+                   command=self.record_angle).pack(side="left", padx=4)
+        ttk.Label(row3, text="W/S=±步长").pack(side="left")
+
+    def _build_gimbal_panel(self, parent):
+        """云台（水平电机 B）面板。"""
+
+        box = ttk.LabelFrame(parent, text="云台（水平）控制")
+        box.pack(fill="x", pady=3)
+        row1 = ttk.Frame(box)
+        row1.pack(fill="x", pady=2)
+        ttk.Label(row1, text="手动速度").pack(side="left")
+        ttk.Scale(row1, from_=0, to=255, variable=self.gimbal_speed_var,
+                  length=130,
+                  command=lambda v: self.gimbal_speed_label.config(
+                      text=str(self.gimbal_speed_var.get()))).pack(
+            side="left", padx=4)
+        self.gimbal_speed_label = ttk.Label(row1, text="150")
+        self.gimbal_speed_label.pack(side="left")
+
+        row2 = ttk.Frame(box)
+        row2.pack(pady=2)
+        ttk.Button(row2, text="◀ 连续左转",
+                   command=lambda: self.gimbal_run(1)).pack(side="left", padx=1)
+        ttk.Button(row2, text="停止",
+                   command=self.gimbal_stop).pack(side="left", padx=1)
+        ttk.Button(row2, text="连续右转 ▶",
+                   command=lambda: self.gimbal_run(-1)).pack(side="left", padx=1)
+
+        row3 = ttk.Frame(box)
+        row3.pack(pady=2)
+        ttk.Label(row3, text="点动(ms)").pack(side="left")
+        self.jog_ms_var = tk.IntVar(value=500)
+        ttk.Entry(row3, textvariable=self.jog_ms_var, width=6).pack(
+            side="left", padx=3)
+        ttk.Button(row3, text="点动左",
+                   command=lambda: self.gimbal_jog(1)).pack(side="left", padx=1)
+        ttk.Button(row3, text="点动右",
+                   command=lambda: self.gimbal_jog(-1)).pack(side="left", padx=1)
+
+    def _build_mech_panel(self, parent):
+        """电机 A / 发射 / 装填 / 激光 面板（test_board 功能）。"""
+
+        box = ttk.LabelFrame(parent, text="发射机构 / 电机 A")
+        box.pack(fill="x", pady=3)
+        row1 = ttk.Frame(box)
+        row1.pack(fill="x", pady=2)
+        ttk.Label(row1, text="速度").pack(side="left")
+        self.motor_speed_var = tk.IntVar(value=200)
+        ttk.Entry(row1, textvariable=self.motor_speed_var, width=6).pack(
+            side="left", padx=3)
+        ttk.Label(row1, text="时长(ms)").pack(side="left")
+        self.motor_ms_var = tk.IntVar(value=500)
+        ttk.Entry(row1, textvariable=self.motor_ms_var, width=6).pack(
+            side="left", padx=3)
+
+        row2 = ttk.Frame(box)
+        row2.pack(pady=2)
+        ttk.Button(row2, text="电机A正转", command=self.motor_a_forward).pack(
+            side="left", padx=1)
+        ttk.Button(row2, text="电机A反转", command=self.motor_a_backward).pack(
+            side="left", padx=1)
+        ttk.Button(row2, text="A连续正",
+                   command=lambda: self._safe(board.set_motor_a,
+                                              self.motor_speed())).pack(
+            side="left", padx=1)
+        ttk.Button(row2, text="A连续反",
+                   command=lambda: self._safe(board.set_motor_a,
+                                              -self.motor_speed())).pack(
+            side="left", padx=1)
+        ttk.Button(row2, text="A停",
+                   command=lambda: self._safe(board.stop_motor_a)).pack(
+            side="left", padx=1)
+
+        row3 = ttk.Frame(box)
+        row3.pack(pady=2)
+        ttk.Button(row3, text="发射", command=lambda: self._safe(
+            board.fire_once)).pack(side="left", padx=1)
+        ttk.Button(row3, text="装填", command=lambda: self._safe(
+            board.load_once)).pack(side="left", padx=1)
+        ttk.Button(row3, text="激光开", command=lambda: self.set_laser(True)).pack(
+            side="left", padx=1)
+        ttk.Button(row3, text="激光关", command=lambda: self.set_laser(False)).pack(
+            side="left", padx=1)
+        ttk.Button(row3, text="全部停止", command=self.stop_all).pack(
+            side="left", padx=4)
+        self.laser_var = tk.StringVar(value="激光：关")
+        ttk.Label(row3, textvariable=self.laser_var).pack(side="left", padx=4)
+        row4 = ttk.Frame(box)
+        row4.pack(pady=2)
+        ttk.Label(row4, text="蜂鸣ms:").pack(side="left")
+        ttk.Entry(row4, textvariable=self.buzzer_ms_var, width=5).pack(side="left", padx=2)
+        ttk.Label(row4, text="Hz:").pack(side="left")
+        ttk.Entry(row4, textvariable=self.buzzer_hz_var, width=5).pack(side="left", padx=2)
+        ttk.Button(row4, text="蜂鸣SD", command=self.buzzer_sd_trigger).pack(side="left", padx=2)
+
+
+    # ---------- 右列 ----------
+    def _build_targets_panel(self, parent):
+        """靶点配置面板。"""
+
+        box = ttk.LabelFrame(parent, text="靶点配置（空格记录偏差+角度）")
+        box.pack(fill="both", expand=True, pady=3)
+        self.target_list = tk.Listbox(box, width=60, height=9)
+        self.target_list.pack(fill="x", padx=4, pady=2)
+        self.target_list.bind("<<ListboxSelect>>", self.on_target_select)
+
+        form = ttk.Frame(box)
+        form.pack(anchor="w", padx=4, pady=2)
+        self.t_tag = tk.IntVar()
+        self.t_name = tk.StringVar()
+        self.t_type = tk.StringVar(value="fire")
+        self.t_angle = tk.IntVar()
+        self.t_offset = tk.IntVar()
+        for i, (label, var, width) in enumerate([
+                ("编号", self.t_tag, 4), ("名称", self.t_name, 6),
+                ("角度", self.t_angle, 4), ("偏移", self.t_offset, 4)]):
+            ttk.Label(form, text=label).grid(row=0, column=2 * i, padx=2)
+            ttk.Entry(form, textvariable=var, width=width).grid(
+                row=0, column=2 * i + 1)
+        ttk.Label(form, text="类型").grid(row=1, column=0, padx=2, pady=3)
+        ttk.Combobox(form, textvariable=self.t_type, values=list(
+            config_io.TARGET_TYPES), width=5, state="readonly").grid(
+            row=1, column=1)
+
+        btns = ttk.Frame(box)
+        btns.pack(anchor="w", padx=4, pady=2)
+        ttk.Button(btns, text="保存修改",
+                   command=self.save_target).pack(side="left", padx=1)
+        ttk.Button(btns, text="新增靶", command=self.add_target).pack(
+            side="left", padx=1)
+        ttk.Button(btns, text="删除选中靶", command=self.delete_target).pack(
+            side="left", padx=1)
+        ttk.Button(btns, text="记录偏差+角度", command=self.record_angle).pack(
+            side="left", padx=1)
+        ttk.Button(btns, text="转到该角度",
+                   command=self.goto_target_angle).pack(side="left", padx=1)
+
+    def _build_global_panel(self, parent):
+        """全局参数面板。"""
+
+        box = ttk.LabelFrame(parent, text="全局参数（track_fire.py 执行参数）")
+        box.pack(fill="both", expand=True, pady=3)
+        self.global_vars = {}
+        fields = [
+            ("gimbal", "search_speed", "盲搜速度", int),
+            ("gimbal", "track_speed", "跟踪速度", int),
+            ("gimbal", "slow_speed", "减速速度", int),
+            ("gimbal", "slow_zone_px", "减速区(px)", int),
+            ("gimbal", "center_half_width", "居中阈值(px)", int),
+            ("gimbal", "lock_frames", "锁定帧数", int),
+            ("gimbal", "direction", "转向系数", int),
+            ("servo", "default_angle", "上电舵机角", int),
+            ("fire", "settle_seconds", "发射等待(s)", float),
+            ("laser", "duration_seconds", "激光时长(s)", float),
+            ("buzzer", "default_ms", "蜂鸣默认时长ms", int),
+            ("buzzer", "default_hz", "蜂鸣默认频率Hz", int),
+        ]
+
+        for i, (section, key, label, _tp) in enumerate(fields):
+            r, c = divmod(i, 2)
+            ttk.Label(box, text=label).grid(row=r, column=2 * c,
+                                            padx=4, pady=2, sticky="e")
+            var = tk.StringVar(value=str(self.config[section][key]))
+            ttk.Entry(box, textvariable=var, width=7).grid(row=r, column=2 * c + 1)
+            self.global_vars[(section, key)] = var
+        ttk.Button(box, text="保存全局参数", command=self.save_global).grid(
+            row=6, column=0, columnspan=2, pady=4)
+
+    # ---------- 通用辅助 ----------
+    def log(self, message):
+        """往底部日志区追加一行。"""
+
+        stamp = time.strftime("%H:%M:%S")
+        self.log_text.configure(state="normal")
+        self.log_text.insert("end", f"[{stamp}] {message}\n")
+        self.log_text.see("end")
+        self.log_text.configure(state="disabled")
+
+    def _safe(self, func, *args):
+        """执行控制板命令；未连接或失败时记日志而不崩界面。"""
+
+        if not board.is_connected():
+            self.log("控制板未连接，命令被忽略。")
+            return False
+        try:
+            func(*args)
+            return True
+        except Exception as exc:
+            self.log(f"控制板命令失败: {exc}")
+            return False
+
+    def get_int(self, var, name, default=None):
+        """读取整型输入；内容为空或非法时记日志并返回 default（None 表示放弃）。"""
+
+        try:
+            return int(var.get())
+        except (tk.TclError, ValueError, TypeError):
+            if default is None:
+                self.log(f"{name} 不是有效数字，请检查输入。")
+            return default
+
+    # ---------- 摄像头 ----------
+    def open_camera(self):
+        """用下拉框选中的编号打开摄像头采集线程。"""
+
+        if self.worker.active:
+            self.log("摄像头已在运行。")
+            return
+        try:
+            index = int(self.camera_var.get())
+        except (tk.TclError, ValueError):
+            self.log("请先在下拉框选择摄像头编号。")
+            return
+        self.worker.start_camera(index)
+        self.log(f"摄像头 {index} 打开中…")
+
+    def close_camera(self):
+        """关闭摄像头采集线程。"""
+
+        self.stop_auto()
+        self.worker.stop_camera()
+        self.log("摄像头已关闭。")
+
+    # ---------- 串口 ----------
+    def connect_board(self):
+        """连接控制板串口。"""
+
+        if board.is_connected():
+            self.log("控制板已连接。")
+            return
+        try:
+            board.connect(self.port_var.get().strip())
+            self._safe(board.stop_all)
+            self.log(f"控制板已连接 {self.port_var.get()}。")
+        except Exception as exc:
+            self.log(f"连接失败: {exc}")
+
+    def disconnect_board(self):
+        """断开控制板串口。"""
+
+        self.stop_auto()
+        if board.is_connected():
+            self._safe(board.stop_all)
+            board.disconnect()
+        self.log("控制板已断开。")
+
+    # ---------- 舵机 ----------
+    def _servo_step(self):
+        """读取步长（非法时用默认 5 度）。"""
+
+        return self.get_int(self.step_var, "步长", default=5)
+
+    def send_servo(self, angle):
+        """下发舵机角度（滑条松手/按钮都会走这里）。"""
+
+        angle = max(0, min(180, int(angle)))
+        if self._safe(board.set_servo_angle, angle):
+            self.servo_var.set(angle)
+
+    def step_servo(self, delta):
+        """舵机微调。"""
+
+        self.send_servo(self.servo_var.get() + delta)
+
+    def goto_servo(self, angle):
+        """舵机转到指定角度。"""
+
+        self.send_servo(angle)
+        self.log(f"舵机转到 {angle} 度。")
+
+    def goto_target_angle(self):
+        """舵机转到编辑区里填的角度。"""
+
+        angle = self.get_int(self.t_angle, "角度")
+        if angle is not None:
+            self.goto_servo(angle)
+
+    def record_angle(self):
+        """空格记录：当前舵机角度 + 摄像头中心与标签的横向偏差，写盘。"""
+
+        tag = self._current_tag()
+        if tag is None:
+            self.log("没有选中的靶，无法记录。")
+            return
+        angle = int(self.servo_var.get())
+        fields = {"angle": angle}
+        note = f"标签 {tag} 角度 {angle} 度"
+        if self.live_tag == tag and self.live_error is not None:
+            fields["offset"] = int(self.live_error)
+            note += f"，偏差 {self.live_error:+d}px"
+        else:
+            note += "（未看到标签，只记录角度，偏差保持原值）"
+        config_io.upsert_target(self.config, tag, **fields)
+        config_io._safe_save_config(self.config)
+        self.refresh_target_list(select_tag=tag)
+        self.beep()
+        self.log(f"已记录 {note} 到配置文件。")
+
+    # ========== 新增：F发射计时记录函数 ==========
+    def record_fire_delay(self):
+        """按F发射时：计算距离识别1/2/3标签的时间差，记录发射角度+延时"""
+        tag_id = self._current_tag()
+        if tag_id not in (1,2,3):
+            self.log("计时记录仅支持标签1/2/3，跳过。")
+            return
+        cache = self.tag_detect_cache.get(tag_id)
+        if cache is None:
+            self.log(f"标签{tag_id}：还没有识别缓存，无法记录发射延时！")
+            return
+
+        fire_ts = time.time()
+        fire_angle = self.servo_var.get()
+        delay_s = round(fire_ts - cache["detect_ts"], 3)
+
+        fields = {
+            "fire_delay": delay_s,
+            "fire_angle": fire_angle
+        }
+        config_io.upsert_target(self.config, tag_id, **fields)
+        config_io._safe_save_config(self.config)
+        self.refresh_target_list(select_tag=tag_id)
+        self.beep()
+        self.log(f"【发射计时记录】标签{tag_id}：识别到发射间隔 {delay_s}s，发射舵机角度 {fire_angle}°")
+
+    def _current_tag(self):
+        """当前生效的标签编号：列表选中项优先，其次自动对准的标签。"""
+
+        selection = self.target_list.curselection()
+        if selection:
+            return self.config["targets"][selection[0]].get("tag")
+        return self.auto_tag
+
+ 
+
+    # ---------- 云台 ----------
+    def _gimbal_signed(self, direction):
+        """把"左/右"意图换算成电机速度（必须取整，控制板只收整数）。"""
+
+        speed = int(self.gimbal_speed_var.get())
+        return int(direction * speed * self.config["gimbal"]["direction"]
+                   * VOLTAGE_POLARITY)
+
+    def gimbal_run(self, direction):
+        """云台连续旋转（direction: 1 左 / -1 右）。"""
+
+        self._safe(board.set_motor_b, self._gimbal_signed(direction))
+
+    def gimbal_jog(self, direction):
+        """云台点动一段时长。"""
+
+        ms = self.get_int(self.jog_ms_var, "点动时长")
+        if ms is not None:
+            self._safe(board.run_motor_b_for, self._gimbal_signed(direction), ms)
+
+    def gimbal_stop(self):
+        """云台停止。"""
+
+        self._safe(board.set_motor_b, 0)
+        self.last_speed = 0
+
+    def motor_speed(self):
+        """读取电机速度输入（非法时返回默认 200）。"""
+
+        return self.get_int(self.motor_speed_var, "电机速度", default=200)
+
+    def _motor_ms(self):
+        """读取电机点动时长（非法时返回默认 500）。"""
+
+        return self.get_int(self.motor_ms_var, "点动时长", default=500)
+
+    def motor_a_forward(self):
+        """电机 A 正转一次（点动）。"""
+
+        self._safe(board.run_motor_a_for, self.motor_speed(), self._motor_ms())
+
+    def motor_a_backward(self):
+        """电机 A 反转一次（点动）。"""
+
+        self._safe(board.run_motor_a_for, -self.motor_speed(), self._motor_ms())
+
+    def motor_b_forward(self):
+        """电机 B 正转一次（点动）。"""
+
+        self._safe(board.run_motor_b_for, self.motor_speed(), self._motor_ms())
+
+    def motor_b_backward(self):
+        """电机 B 反转一次（点动）。"""
+
+        self._safe(board.run_motor_b_for, -self.motor_speed(), self._motor_ms())
+
+    # ---------- 发射 / 激光 ----------
+    def set_laser(self, on):
+        """打开 / 关闭激光。"""
+
+        ok = self._safe(board.laser_on if on else board.laser_off)
+        if ok:
+            self.laser_on = on
+            self.laser_var.set("激光：开" if on else "激光：关")
+            self.log("激光已打开。" if on else "激光已关闭。")
+
+    def stop_all(self):
+        """停止全部电机并关激光。"""
+
+        self.stop_auto()
+        if self.laser_on:
+            self.set_laser(False)
+        self._safe(board.stop_all)
+        self.log("全部电机已停止。")
+
+    # ---------- 靶点配置 ----------
+    def refresh_target_list(self, select_tag=None):
+        """按配置刷新靶列表，可指定选中某个标签。"""
+
+        self.target_list.delete(0, "end")
+        for target in self.config["targets"]:
+            fd = target.get("fire_delay", "-")
+            fa = target.get("fire_angle", "-")
+            self.target_list.insert(
+                "end",
+                f"标签 {target['tag']:>2}  {target['name']:<4} "
+                f"{target['type']:<5} 角度 {target['angle']:>3}  "
+                f"偏移 {target['offset']}  发射延时:{fd}s 发射角:{fa}°")
+        if select_tag is not None:
+            for i, target in enumerate(self.config["targets"]):
+                if target.get("tag") == select_tag:
+                    self.target_list.selection_clear(0, "end")
+                    self.target_list.selection_set(i)
+                    break
+        self.on_target_select()
+
+    def on_target_select(self, event=None):
+        """选中靶后把字段填到编辑区。"""
+
+        selection = self.target_list.curselection()
+        if not selection:
+            return
+        target = self.config["targets"][selection[0]]
+        self.t_tag.set(target["tag"])
+        self.t_name.set(target["name"])
+        self.t_type.set(target["type"])
+        self.t_angle.set(target["angle"])
+        self.t_offset.set(target["offset"])
+
+    def _target_fields(self):
+        """读取靶点编辑区的全部数字字段；非法时记日志并返回 None。"""
+
+        tag = self.get_int(self.t_tag, "标签编号")
+        angle = self.get_int(self.t_angle, "角度")
+        offset = self.get_int(self.t_offset, "偏移")
+        if tag is None or angle is None or offset is None:
+            return None
+        return {"tag": tag, "name": self.t_name.get(),
+                "type": self.t_type.get(), "angle": angle, "offset": offset}
+
+    def save_target(self):
+        """保存编辑区内容到选中的靶并写盘。"""
+
+        selection = self.target_list.curselection()
+        if not selection:
+            self.log("请先在列表中选中要修改的靶。")
+            return
+        fields = self._target_fields()
+        if fields is None:
+            return
+        target = self.config["targets"][selection[0]]
+        target.update(fields)
+        config_io._safe_save_config(self.config)
+        self.refresh_target_list(select_tag=target["tag"])
+        self.log(f"标签 {target['tag']} 配置已保存。")
+
+    def add_target(self):
+        """按编辑区内容新增一个靶并写盘。"""
+
+        fields = self._target_fields()
+        if fields is None:
+            return
+        tag = fields["tag"]
+        if config_io.get_target(self.config, tag) is not None:
+            messagebox.showwarning("新增靶", f"标签 {tag} 已存在。")
+            return
+        config_io.upsert_target(
+            self.config, tag, name=fields["name"] or f"{tag}号",
+            type=fields["type"], angle=fields["angle"],
+            offset=fields["offset"])
+        config_io.safe_save_config(self.config)
+        self.refresh_target_list(select_tag=tag)
+        self.log(f"已新增标签 {tag}。")
+
+    def delete_target(self):
+        """删除选中的靶并写盘。"""
+
+        selection = self.target_list.curselection()
+        if not selection:
+            self.log("请先在列表中选中要删除的靶。")
+            return
+        removed = self.config["targets"].pop(selection[0])
+        config_io.safe_save_config(self.config)
+        self.refresh_target_list()
+        self.log(f"已删除标签 {removed['tag']}。")
+
+    def save_global(self):
+        """保存全局参数页的所有字段并写盘。"""
+        for (section, key), var in self.global_vars.items():
+            raw = var.get().strip()
+            try:
+                val = float(raw)
+                if val.is_integer():
+                    val = int(val)
+                self.config[section][key] = val
+            except ValueError:
+                messagebox.showwarning("全局参数",
+                                       f"{section}.{key} 的值 {raw!r} 不是数字。")
+                return
+        try:
+            config_io.safe_save_config(self.config)
+            self.log("全局参数已保存成功！")
+        except Exception as e:
+            messagebox.showerror("保存失败", f"写入配置文件失败：{e}")
+            self.log(f"【ERROR】保存配置文件失败：{e}")
+
+
+    # ---------- 自动搜索 ----------
+    def start_search(self):
+        """开始慢转搜索。"""
+
+        if not board.is_connected():
+            self.log("请先连接控制板。")
+            return
+        if not self.worker.active:
+            self.log("请先打开摄像头。")
+            return
+        self.auto_mode = MODE_SEARCH
+        self.auto_tag = None        # 重新搜索任何识别到的标签
+        self.centered = 0
+        self.log("自动搜索开始：云台慢转，识别到标签会自动对准停下。")
+
+    def stop_auto(self):
+        """退出自动模式并停云台。"""
+
+        if self.auto_mode != MODE_MANUAL:
+            self.log("自动模式已退出。")
+        self.auto_mode = MODE_MANUAL
+        self.gimbal_stop()
+
+    def _auto_tick(self, frame_width, tags):
+        """自动搜索 / 对准逻辑，每个刷新周期调用一次。"""
+
+        gimbal = self.config["gimbal"]
+        center_x = frame_width // 2
+
+        if self.auto_mode == MODE_SEARCH:
+            target = tags[0] if tags else None   # 识别到任何标签都跟过去
+        elif self.auto_mode == MODE_TRACK and self.auto_tag is not None:
+            target = next((t for t in tags if t.tag_id == self.auto_tag), None)
+            if target is None:
+                self._send_search_speed()        # 目标丢失，继续慢转找回
+                return
+        else:
+            return
+
+        if target is None:
+            self._send_search_speed()
+            return
+
+        if self.auto_mode == MODE_SEARCH:
+            self.auto_tag = target.tag_id
+            self.auto_mode = MODE_TRACK
+            self.centered = 0
+
+        tag_cfg = config_io.get_target(self.config, target.tag_id)
+        offset = tag_cfg["offset"] if tag_cfg else 0
+        error = int(target.center[0] - center_x - offset)
+
+        if abs(error) <= gimbal["center_half_width"]:
+            self.centered += 1
+            if self.centered >= gimbal["lock_frames"]:
+                self._send_speed(0)
+                self.auto_mode = MODE_STOP
+                self.beep()
+                self.refresh_target_list(select_tag=target.tag_id)
+                if tag_cfg:
+                    self.goto_servo(tag_cfg["angle"])
+                self.log(f"标签 {target.tag_id} 已对准！"
+                         "微调角度后按空格记录。")
+        else:
+            self.centered = 0
+            speed = gimbal["track_speed"] if abs(error) > gimbal["slow_zone_px"] \
+                else gimbal["slow_speed"]
+            if error > 0:
+                speed = -speed
+            self._send_speed(int(speed * gimbal["direction"] * VOLTAGE_POLARITY))
+
+    def _send_search_speed(self):
+        """慢转搜索速度（必须取整，控制板只收整数）。"""
+
+        speed = int(self.search_speed_var.get())
+        self._send_speed(int(speed * self.config["gimbal"]["direction"]
+                             * VOLTAGE_POLARITY))
+
+    def _send_speed(self, speed):
+        """下发云台速度（速度变化才发送）。"""
+
+        speed = int(speed)
+        if speed == self.last_speed:
+            return
+        if self._safe(board.set_motor_b, speed):
+            self.last_speed = speed
+
+    # ---------- 刷新循环 ----------
+    def _tick(self):
+        """界面刷新：取帧 → 实时偏差 → 自动逻辑 → 画叠加 → 显示。"""
+
+        frame, tags = self.worker.snapshot()
+
+        if self.worker.error:
+            self.status_var.set(f"摄像头打开失败: {self.worker.error}")
+            self.worker.error = None
+            self.worker.stop_camera()
+
+        if frame is not None:
+            center_x = frame.shape[1] // 2
+            self._update_live_error(tags, center_x)
+            if self.auto_mode in (MODE_SEARCH, MODE_TRACK):
+                self._auto_tick(frame.shape[1], tags)
+            self._draw_preview(frame, tags, center_x)
+        elif not self.worker.active:
+            self.status_var.set("摄像头未打开")
+
+        self.root.after(UI_INTERVAL_MS, self._tick)
+
+    def _update_live_error(self, tags, center_x):
+        """计算当前追踪标签相对摄像头中心的横向偏差（空格记录用）。"""
+
+        self.live_tag, self.live_error = None, None
+        tag_id = self._current_tag()
+        if tag_id is None:
+            return
+        target = next((t for t in tags if t.tag_id == tag_id), None)
+        if target is not None:
+            self.live_tag = tag_id
+            self.live_error = int(target.center[0] - center_x)
+
+        # ========== 新增：识别到1/2/3标签，缓存识别时间 + 当前舵机角度 ==========
+        for t in tags:
+            if t.tag_id in (1,2,3):
+                now_ts = time.time()
+                current_servo_angle = self.servo_var.get()
+                self.tag_detect_cache[t.tag_id] = {
+                    "detect_ts": now_ts,
+                    "detect_angle": current_servo_angle
+                }
+
+    def _draw_preview(self, frame, tags, center_x):
+        """画识别叠加并显示到画布（PNG 编码，无需 Pillow；随窗口缩放）。"""
+
+        cw = max(self.canvas.winfo_width(), PREVIEW_W)
+        ch = max(self.canvas.winfo_height(), PREVIEW_H // 2)
+        width = min(cw, int(ch * 16 / 9))       # 保持 16:9 铺满画布
+        height = int(width * 9 / 16)
+        x0, y0 = (cw - width) // 2, (ch - height) // 2   # 画布内居中
+
+        small = cv2.resize(frame, (width, height))
+        scale = width / frame.shape[1]
+        center_y = height // 2
+        cv2.line(small, (width // 2, 0), (width // 2, height), (255, 0, 0), 1)
+        cv2.line(small, (0, center_y), (width, center_y), (255, 0, 0), 1)
+
+        for tag in tags:
+            corners = (tag.corners * scale).astype(int)
+            pts = [tuple(p) for p in corners]
+            color = (0, 0, 255) if tag.tag_id == self.auto_tag else (0, 255, 0)
+            cv2.polylines(small, [corners], True, color, 2)
+            cv2.circle(small, pts[0], 4, color, -1)
+            cv2.putText(small, f"ID:{tag.tag_id}", pts[0],
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
+
+        if self.live_error is not None:
+            px = int(width // 2 + self.live_error * scale)
+            cv2.arrowedLine(small, (width // 2, center_y - 20),
+                            (px, center_y - 20), (255, 255, 255), 2)
+
+        mode_text = {
+            MODE_SEARCH: "搜索中(慢转)",
+            MODE_TRACK: "对准中",
+            MODE_STOP: "已对准，空格记录",
+        }.get(self.auto_mode, "手动")
+        err_text = f"偏差 {self.live_error:+d}" if self.live_error is not None \
+            else "偏差 --"
+        cv2.putText(small,
+                    f"[{mode_text}] 舵机 {self.servo_var.get()} {err_text}",
+                    (10, 24), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
+
+        ok, buf = cv2.imencode(".png", small)
+        if not ok:
+            return
+        self._photo = tk.PhotoImage(data=base64.b64encode(buf.tobytes()))
+        self.canvas.delete("all")
+        self.canvas.create_image(x0, y0, image=self._photo, anchor="nw")
+
+        status = (f"模式 {mode_text} | 标签 {self.auto_tag} | {err_text}"
+                  f" | 激光 {'开' if self.laser_on else '关'}")
+        self.status_var.set(status)
+
+    # ---------- test_board.py 键盘功能 ----------
+    def _bind_keys(self):
+        """绑定 test_board.py 的全部按键（输入框聚焦时忽略）。"""
+
+        bindings = {
+            "w": lambda: self.step_servo(-self._servo_step()),
+            "s": lambda: self.step_servo(self._servo_step()),
+            "a": lambda: self.gimbal_jog(1),
+            "d": lambda: self.gimbal_jog(-1),
+            "o": lambda: self.set_laser(True),
+            "p": lambda: self.set_laser(False),
+            # 先记录延时，再发射
+            "f": lambda: (self.record_fire_delay(), self._safe(board.fire_once)),
+            "l": lambda: self._safe(board.load_once),
+            "0": self.stop_all,
+            "1": self.motor_a_forward,
+            "2": self.motor_a_backward,
+            "3": self.motor_b_forward,
+            "4": self.motor_b_backward,
+            "6": lambda: self.goto_servo(60),
+            "9": lambda: self.goto_servo(90),
+            "<space>": self.record_angle,   # 空格：记录偏差+角度
+            "q": self.on_closing,
+            "b": self.buzzer_sd_trigger,
+        }
+        for key, handler in bindings.items():
+            self.root.bind(key, self._make_key_handler(handler))
+
+    @staticmethod
+    def _make_key_handler(handler):
+        """生成按键回调：焦点在输入控件时忽略按键。"""
+
+        def handler_wrapper(event):
+            widget = event.widget.winfo_class()
+            # ttk 控件的类名带 T 前缀（TEntry/TCombobox/TSpinbox）
+            if widget in ("Entry", "Text", "Spinbox", "Combobox",
+                          "TEntry", "TSpinbox", "TCombobox"):
+                return
+            handler()
+            return "break"
+
+        return handler_wrapper
+
+    # ---------- 退出 ----------
+    def on_closing(self):
+        """退出前停电机、关激光、断串口、停摄像头。"""
+
+        if not messagebox.askokcancel("退出", "确定退出？配置已实时保存。"):
+            return
+        self.worker.stop_camera()
+        try:
+            if board.is_connected():
+                board.stop_all()
+                board.laser_off()
+                board.disconnect()
+        except Exception:
+            pass
+        self.root.destroy()
+
+
+def main():
+    """启动主界面。"""
+
+    root = tk.Tk()
+    CalibApp(root)
+    root.mainloop()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>我的服务器</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei","Segoe UI",sans-serif;background:#fff;color:#222;min-height:100vh}
+main{max-width:640px;margin:0 auto;padding:60px 24px}
+h1{font-size:22px;margin-bottom:24px;font-weight:600}
+ul{list-style:none}
+li{margin-bottom:14px}
+a{color:#1a5fb4;text-decoration:none;font-size:16px}
+a:hover{text-decoration:underline}
+.muted{color:#888;font-size:13px;margin-top:30px}
+</style>
+</head>
+<body>
+<main>
+  <p style="text-align:right;margin:0 0 8px">
+    <a href="/class" style="font-size:12px;color:#aaa;text-decoration:none">🎓 一班专用入口</a>
+    <span id="acct" style="font-size:12px;color:#666;margin-left:14px"></span>
+  </p>
+  <h1><span id="gateWord" style="cursor:default">我的</span>服务器</h1>
+  <ul>
+    <li><a href="/__files">文件区</a></li>
+    <li><a href="/__chat">AI 对话</a></li>
+    <li><a href="#" id="noticeLink">公告</a></li>
+    <li><a href="/admax">站长入口</a></li>
+  </ul>
+  <p class="muted">进入网站时公告自动弹窗</p>
+</main>
+<div id="nModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:99;align-items:center;justify-content:center">
+  <div style="background:#fff;border-radius:8px;max-width:560px;width:92%;max-height:75vh;overflow:auto;padding:20px 24px;border:1px solid #ccc">
+    <h2 style="margin:0 0 10px;font-size:17px">公告</h2>
+    <div id="nBody" style="line-height:1.8;font-size:14.5px"></div>
+    <div style="margin-top:12px;border-top:1px solid #ddd;padding-top:10px">
+      <label style="font-size:13px;color:#666">历史公告：</label>
+      <select id="nHist" style="padding:4px;margin-left:4px"></select>
+    </div>
+    <div style="text-align:right;margin-top:14px"><button onclick="document.getElementById('nModal').style.display='none'" style="padding:7px 20px;border:1px solid #1a5fb4;background:#1a5fb4;color:#fff;border-radius:4px;cursor:pointer">我知道了</button></div>
+  </div>
+</div>
+<script>
+// 右上角账号组件：显示账号名 / 登录 / 登出
+fetch('/__me').then(r => r.json()).then(j => {
+  const a = document.getElementById('acct');
+  if (j.user) a.innerHTML = '👤 ' + j.user + ' · <a href="/__logout" style="color:#1a5fb4">登出</a>';
+  else a.innerHTML = '<a href="/__login" style="color:#1a5fb4">登录 / 注册</a>';
+}).catch(() => {});
+function mdRender(t) {
+  const d = document.getElementById('nBody');
+  d.innerHTML = t
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/^### (.*)$/gm,'<h3>$1</h3>').replace(/^## (.*)$/gm,'<h3>$1</h3>').replace(/^# (.*)$/gm,'<h2>$1</h2>')
+    .replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*(.+?)\*/g,'<i>$1</i>')
+    .replace(/`(.+?)`/g,'<code style="background:#f2f2f2;padding:1px 5px;border-radius:3px">$1</code>')
+    .replace(/^&gt; (.*)$/gm,'<blockquote style="border-left:3px solid #999;margin:.4em 0;padding:2px 10px;color:#555">$1</blockquote>')
+    .replace(/^[-*] (.*)$/gm,'<li>$1</li>')
+    .replace(/\n/g,'<br>');
+}
+async function showNotice() {
+  try {
+    const [cur, hist] = await Promise.all([
+      fetch('/__notice').then(r => r.text()),
+      fetch('/__notice_history').then(r => r.json())
+    ]);
+    mdRender(cur);
+    const sel = document.getElementById('nHist');
+    sel.innerHTML = '<option value="">当前公告</option>' +
+      (hist || []).map(h => `<option value="${h.ts}">${h.label}</option>`).join('');
+    sel.onchange = async () => {
+      if (!sel.value) { mdRender(cur); return; }
+      mdRender(await fetch('/__notice_view?ts=' + sel.value).then(r => r.text()));
+    };
+    document.getElementById('nModal').style.display = 'flex';
+  } catch (e) {}
+}
+document.getElementById('noticeLink').onclick = e => { e.preventDefault(); showNotice(); };
+// 隐藏入口：标题「我的」4秒内连点3下
+let gateCnt = 0, gateTimer = null;
+document.getElementById('gateWord').addEventListener('click', () => {
+  gateCnt++;
+  clearTimeout(gateTimer);
+  gateTimer = setTimeout(() => { gateCnt = 0; }, 4000);
+  if (gateCnt >= 3) {
+    gateCnt = 0;
+    window.location.href = '/__remote/gate';
+  }
+});
+showNotice();
+</script>
+<!-- 本地 AI 对话（Ollama 悬浮组件） -->
+<button id="oaiBtn" title="本地 AI 对话">✦</button>
+<div id="oaiPanel">
+  <div class="oai-head">
+    <span class="oai-title">本地 AI 对话</span>
+    <select id="oaiModel"><option value="qwen">Qwen2.5-3B</option><option value="glm">GLM4-9B</option></select>
+    <button id="oaiClose">✕</button>
+  </div>
+  <div class="oai-msgs" id="oaiMsgs"><div class="oai-tip">与本地大模型对话，数据不出服务器<br>首次提问需加载模型，请耐心等待</div></div>
+  <div class="oai-input">
+    <textarea id="oaiText" rows="1" placeholder="输入问题…（Enter 发送）"></textarea>
+    <button id="oaiSend">发送</button>
+  </div>
+</div>
+<style>
+#oaiBtn{position:fixed;right:20px;bottom:20px;z-index:900;width:52px;height:52px;border-radius:50%;border:none;background:linear-gradient(135deg,#6a5cff,#3ec6ff);color:#fff;font-size:22px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35);transition:.2s}
+#oaiBtn:hover{transform:scale(1.08)}
+#oaiPanel{display:none;position:fixed;right:20px;bottom:82px;z-index:901;width:min(360px,calc(100vw - 32px));height:min(480px,70vh);background:#151a2e;border:1px solid rgba(255,255,255,.15);border-radius:14px;box-shadow:0 16px 50px rgba(0,0,0,.5);flex-direction:column;overflow:hidden;color:#e8ecf4;font-family:"Microsoft YaHei",sans-serif}
+#oaiPanel.open{display:flex}
+.oai-head{display:flex;align-items:center;gap:8px;padding:10px 12px;background:rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.1)}
+.oai-title{flex:1;font-size:14px;font-weight:600}
+#oaiModel{background:#0f1425;color:#cdd6f4;border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:3px 6px;font-size:12px}
+#oaiClose{background:none;border:none;color:#9aa4c0;font-size:15px;cursor:pointer}
+.oai-msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;font-size:13.5px;line-height:1.7}
+.oai-tip{color:#7f8ab0;text-align:center;font-size:12px;margin:auto}
+.oai-m{max-width:88%;padding:8px 12px;border-radius:12px;white-space:pre-wrap;word-break:break-word}
+.oai-u{align-self:flex-end;background:#4a6cf7;color:#fff;border-bottom-right-radius:4px}
+.oai-a{align-self:flex-start;background:rgba(255,255,255,.1);border-bottom-left-radius:4px}
+.oai-e{align-self:center;color:#ff8a8a;font-size:12px}
+.oai-input{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04)}
+#oaiText{flex:1;resize:none;background:#0f1425;border:1px solid rgba(255,255,255,.18);border-radius:8px;color:#e8ecf4;padding:8px 10px;font-size:13.5px;font-family:inherit;outline:none;max-height:90px}
+#oaiSend{background:#4a6cf7;color:#fff;border:none;border-radius:8px;padding:0 16px;font-size:13.5px;cursor:pointer}
+#oaiSend:disabled{opacity:.5;cursor:default}
+</style>
+<script>
+(function(){
+  const btn=document.getElementById('oaiBtn'),panel=document.getElementById('oaiPanel'),
+        msgs=document.getElementById('oaiMsgs'),text=document.getElementById('oaiText'),
+        send=document.getElementById('oaiSend'),model=document.getElementById('oaiModel');
+  let hist=[];
+  btn.onclick=()=>panel.classList.toggle('open');
+  document.getElementById('oaiClose').onclick=()=>panel.classList.remove('open');
+  function add(cls,t){const d=document.createElement('div');d.className='oai-m '+cls;d.textContent=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;}
+  function clearTip(){const t=msgs.querySelector('.oai-tip');if(t)t.remove();}
+  async function ask(){
+    const q=text.value.trim();
+    if(!q)return;
+    text.value='';
+    clearTip();
+    add('oai-u',q);
+    hist.push({role:'user',content:q});
+    send.disabled=true;
+    const wait=add('oai-a','思考中…');
+    try{
+      const r=await fetch('/__ollama/chat',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({model:model.value,messages:hist.slice(-30)})});
+      const j=await r.json();
+      if(j.ok){wait.textContent=j.reply;hist.push({role:'assistant',content:j.reply});}
+      else{wait.className='oai-m oai-e';wait.textContent='✕ '+(j.error||'调用失败');hist.pop();}
+    }catch(e){wait.className='oai-m oai-e';wait.textContent='✕ 网络错误';hist.pop();}
+    send.disabled=false;text.focus();
+  }
+  send.onclick=ask;
+  text.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();ask();}});
+})();
+</script>
+</body>
+</html>

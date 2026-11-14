@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<title>🖥 远程操控·测试(流畅) · 爱沃</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:#0a0e1a;color:#dfe6f3;font-family:"Microsoft YaHei",sans-serif;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+#bar{display:flex;gap:5px;align-items:center;padding:6px 7px;background:#12182b;border-bottom:1px solid #232e4a;flex-wrap:wrap;font-size:12.5px;user-select:none}
+.btn{padding:6px 10px;border:1px solid #2a3552;border-radius:6px;background:#1a2138;color:#c9d6f0;cursor:pointer;font-size:12px;user-select:none;white-space:nowrap}
+.btn:active{background:#2a3552}
+.btn.on{background:#3350b0;border-color:#5b8cff;color:#fff}
+select{padding:5px 6px;border:1px solid #2a3552;border-radius:6px;background:#1a2138;color:#c9d6f0;font-size:12px}
+#stat{margin-left:auto;color:#5be0a0;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+#stat b{color:#ffcf8a;font-weight:600}
+#wrap{flex:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#000;touch-action:none}
+canvas{user-select:none}
+#tip{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#889;padding:12px 20px;border:1px solid #233;border-radius:10px;font-size:14px;text-align:center;pointer-events:none}
+#txtrow{display:flex;gap:6px;padding:6px 7px;background:#12182b;border-top:1px solid #232e4a}
+#txt{flex:1;padding:9px;border:1px solid #2a3552;border-radius:6px;background:#151c30;color:#dfe6f3;font-size:14px}
+/* ---------- 虚拟键盘（自适应：键高/字号/间距随视口伸缩，横屏窄屏自动紧凑） ---------- */
+#kbd{display:none;flex-direction:column;gap:clamp(2px,0.6vh,4px);padding:clamp(3px,0.8vh,6px) 5px clamp(4px,1vh,7px);background:#0f1526;border-top:1px solid #232e4a;user-select:none;touch-action:none}
+#kbd.show{display:flex}
+.kstrip{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.kstrip::-webkit-scrollbar{display:none}
+.kstrip .kb-key{flex:0 0 auto;min-width:clamp(40px,11vw,52px);padding:0 9px;height:clamp(22px,4.6vh,30px);font-size:clamp(10px,1.4vh,12px)}
+.krow{display:flex;gap:clamp(2px,0.5vw,4px)}
+.kb-key{flex:1;height:clamp(26px,6.2vh,38px);display:flex;align-items:center;justify-content:center;background:#1a2138;border:1px solid #2a3552;border-radius:clamp(4px,0.8vh,6px);font-size:clamp(12px,2vh,15px);color:#c9d6f0;cursor:pointer;white-space:nowrap}
+.kb-key.press{background:#3350b0;color:#fff;border-color:#5b8cff}
+.kb-key.mod.on{background:#3350b0;border-color:#5b8cff;color:#fff}
+.kb-key.dark{background:#12182b}
+.kb-key.sp{flex:4.2}
+.kb-key.w2{flex:1.6}
+.kb-key.w15{flex:1.35}
+.kb-key small{font-size:clamp(9px,1.3vh,11px);color:#7f8db0}
+/* 以用户重启：大号弹窗（tip 是 pointer-events:none，选择按钮必须放在独立弹窗里） */
+#modal{display:none;position:fixed;inset:0;background:rgba(4,8,20,.78);z-index:99;align-items:center;justify-content:center;padding:16px}
+#modal.show{display:flex}
+#mbox{background:#121a2e;border:1px solid #2a3552;border-radius:14px;padding:18px 18px 14px;width:min(420px,92vw);max-height:86vh;display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,.6)}
+#mtitle{font-size:16px;font-weight:600;color:#fff;margin-bottom:10px}
+#musers{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.muser{padding:14px 12px;border:1px solid #2a3552;border-radius:10px;background:#1a2138;color:#dfe6f3;font-size:16px;text-align:center;cursor:pointer;white-space:nowrap}
+.muser small{display:block;font-size:11px;color:#7f8db0;margin-top:3px}
+.muser:active{background:#3350b0;border-color:#5b8cff;color:#fff}
+#mlog{background:#0a0f1e;border:1px solid #1f2947;border-radius:8px;padding:8px 10px;font-size:12px;color:#8fa3cc;max-height:34vh;overflow-y:auto;font-family:Consolas,monospace;line-height:1.7;white-space:pre-wrap;word-break:break-all}
+#mlog .ok{color:#5be0a0}
+#mlog .err{color:#ff8a8a}
+#mlog .cur{color:#ffcf8a}
+#mclose{margin-top:10px;padding:10px;border:1px solid #2a3552;border-radius:8px;background:#1a2138;color:#c9d6f0;font-size:14px;cursor:pointer}
+/* 矮屏（手机横屏）：工具栏与文字行同步压缩，给画面留更多空间 */
+@media (max-height:460px){
+  #bar{padding:3px 5px;gap:3px}
+  .btn{padding:4px 7px;font-size:11px}
+  select{padding:3px 4px;font-size:11px}
+  #txtrow{padding:3px 5px}
+  #txt{padding:5px;font-size:13px}
+}
+</style>
+</head>
+<body>
+<div id="bar">
+  <select id="quality">
+    <option value="256,55,10">144p</option>
+    <option value="640,60,15">360p</option>
+    <option value="854,65,20" selected>480p</option>
+    <option value="1280,65,20">720p</option>
+    <option value="1920,70,10">1080p 文字</option>
+    <option value="1920,85,10">1080p 高清</option>
+  </select>
+  <select id="fpsSel">
+    <option value="10">10fps</option>
+    <option value="15">15fps</option>
+    <option value="20" selected>20fps</option>
+    <option value="30">30fps</option>
+  </select>
+  <span class="btn" data-btn="2">右键</span>
+  <span class="btn" data-key="Enter">回车</span>
+  <span class="btn" data-key="Tab">Tab</span>
+  <span class="btn" data-key="Escape">Esc</span>
+  <span class="btn" data-key="Backspace">⌫</span>
+  <span class="btn sticky" data-mod="ctrl">Ctrl</span>
+  <span class="btn sticky" data-mod="alt">Alt</span>
+  <span class="btn sticky" data-mod="win">Win</span>
+  <span class="btn" id="kbBtn">⌨ 键盘</span>
+  <span class="btn on" id="fillBtn">铺满</span>
+  <span class="btn" id="zoomOut">－</span>
+  <span class="btn" id="zoomLvl" title="点击复位缩放">1×</span>
+  <span class="btn" id="zoomIn">＋</span>
+  <span class="btn" id="fsBtn">横屏全屏</span>
+  <span class="btn" data-sys="switch_user">👤切换用户</span>
+  <span class="btn" data-sys="reconnect_console">↩回到此用户</span>
+  <span class="btn" data-sys="theme">🎨切主题</span>
+  <a class="btn" href="/__remote/menu" style="text-decoration:none">⌂ 选择</a>
+  <span class="btn" data-sys="restart_server">🔁重启服务</span>
+  <span class="btn" data-sys="restart_as_user">🔁以用户重启</span>
+  <span class="btn" data-sys="reboot">🔄重启电脑</span>
+  <span class="btn" data-sys="shutdown" style="color:#ff8a8a;border-color:#6a2a2a">⏻关机</span>
+  <span id="stat">连接中…</span>
+</div>
+<div id="wrap"><div id="tip">轻点 = 指针传送并点击<br>长按拖动 = 拖拽 · 双指滑动 = 滚轮<br>双指捏合 = 缩放 · 不松手整体滑动 = 平移查看<br>底部「⌨ 键盘」打开虚拟键盘</div><canvas id="cv"></canvas></div>
+<div id="kbd"></div>
+<div id="modal"><div id="mbox">
+  <div id="mtitle">🔁 以指定用户重启</div>
+  <div id="musers"></div>
+  <div id="mlog"></div>
+  <button id="mclose">关闭</button>
+</div></div>
+<div id="txtrow">
+  <input id="txt" placeholder="输入文字发送到远程电脑（支持中文）">
+  <span class="btn" id="viaTxt" title="切换发送方式">⌨直发</span>
+  <span class="btn" id="sendTxt">发送</span>
+</div>
+<script>
+const cv = document.getElementById('cv'), ctx = cv.getContext('2d');
+const stat = document.getElementById('stat'), tip = document.getElementById('tip');
+const wrap = document.getElementById('wrap');
+let ws = null, connected = false;
+let bytes = 0, frames = 0, lastStat = Date.now(), lastFps = 0;
+let scrollBase = null, twoFinger = false;
+let pinch = null;   // 双指手势状态 {d0, dPrev, mid0x, mid0y, scrollY, mode}
+let touched = false, rtt = null;
+// 延迟测量：每 2 秒一次 ping
+setInterval(() => { if (connected) send({t: 'ping', ts: Date.now()}); }, 2000);
+
+function send(o) { if (ws && ws.readyState === 1) ws.send(JSON.stringify(o)); }
+let userQ = false;   // 手动切换过画质/帧率后禁用自动升清，避免覆盖手选值
+function sendQ() {
+  const [w, q] = document.getElementById('quality').value.split(',');
+  const fps = +document.getElementById('fpsSel').value;
+  // 测试版走云游戏式流水线：服务端只发最新帧 + 发送线程 + 自适应画质
+  send({t: 'quality', w: +w, q: +q, fps: fps, mode: 'smooth'});
+}
+// 手动切换：标记 userQ，确保设置不被自动升清覆盖
+function userSendQ() { userQ = true; sendQ(); }
+document.getElementById('quality').onchange = userSendQ;
+document.getElementById('fpsSel').onchange = userSendQ;
+
+// ---------- 防卡键：本地按下表，断线/切后台/关页时全部抬起 ----------
+const locallyDown = new Set();
+function releaseAllLocal() {
+  locallyDown.forEach(k => send({t: 'kup', key: k}));
+  locallyDown.clear();
+  vkRelease();
+}
+window.addEventListener('pagehide', releaseAllLocal);
+document.addEventListener('visibilitychange', () => { if (document.hidden) releaseAllLocal(); });
+
+let retryDelay = 3000;   // 重连退避：断线重试 3s 起步，最长 30s
+function connect() {
+  if (ws && (ws.readyState === 0 || ws.readyState === 1)) return;  // 防重复连接
+  ws = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/__remote/ws' + location.search);
+  ws.binaryType = 'arraybuffer';
+  ws.onopen = () => { connected = true; retryDelay = 3000; sendQ(); };
+  ws.onclose = () => {
+    connected = false; releaseAllLocal();
+    tip.style.display = 'block';
+    tip.innerHTML = '连接断开，' + Math.round(retryDelay / 1000) + '秒后自动重连…';
+    setTimeout(connect, retryDelay);
+    retryDelay = Math.min(retryDelay * 2, 30000);
+  };
+  ws.onerror = () => ws.close();
+  ws.onmessage = e => {
+    if (typeof e.data === 'string') {
+      const j = JSON.parse(e.data);
+      if (j.t === 'err') { tip.style.display = 'block'; tip.textContent = '⚠ ' + j.msg; }
+      if (j.t === 'sticky') syncSticky(j.keys);
+      if (j.t === 'pong') { rtt = Date.now() - j.ts; lastPongTs = Date.now(); }
+      return;
+    }
+    bytes += e.data.byteLength; frames++;
+    lastFrameTs = Date.now();
+    drawFrame(new Blob([e.data], {type: 'image/jpeg'}));
+  };
+}
+// 帧解码绘制：优先 createImageBitmap（快），旧浏览器（iOS 12 等）回退 objectURL + Image
+let _lastImgUrl = null;
+function drawFrame(blob) {
+  const done = img => {
+    cv.width = img.naturalWidth || img.width; cv.height = img.naturalHeight || img.height;
+    ctx.drawImage(img, 0, 0);
+    tip.style.display = 'none';
+    layout();
+  };
+  if (window.createImageBitmap) {
+    createImageBitmap(blob).then(done).catch(() => {});
+  } else {
+    if (_lastImgUrl) URL.revokeObjectURL(_lastImgUrl);
+    _lastImgUrl = URL.createObjectURL(blob);
+    const im = new Image();
+    im.onload = () => { done(im); URL.revokeObjectURL(_lastImgUrl); _lastImgUrl = null; };
+    im.onerror = () => { URL.revokeObjectURL(_lastImgUrl); _lastImgUrl = null; };
+    im.src = _lastImgUrl;
+  }
+}
+connect();
+
+// 断流看门狗：画面停更 5 秒提示可能原因（锁屏=安全桌面无法远程显示/输入，用「切换用户」代替）
+// 半开连接看门狗：超过 25 秒既无画面也无 pong（隧道假死）→ 强制断开触发重连
+let lastFrameTs = Date.now(), noFrameHint = false, lastPongTs = Date.now();
+setInterval(() => {
+  const stalled = connected && cv.width && (Date.now() - lastFrameTs > 5000);
+  if (stalled && !noFrameHint) {
+    noFrameHint = true;
+    tip.style.display = 'block';
+    tip.innerHTML = '⚠ 画面已停止更新：会话可能被锁屏或已断开。<br>'
+        + '锁屏（Win+L）是 Windows 安全桌面，无法远程显示与输入。<br>'
+        + '请改用「👤切换用户」，或点「↩回到此用户」尝试恢复画面';
+  } else if (!stalled && noFrameHint) {
+    noFrameHint = false;
+  }
+  if (connected && Date.now() - lastFrameTs > 25000 && Date.now() - lastPongTs > 25000) {
+    try { ws.close(); } catch (err) {}
+  }
+}, 3000);
+
+// 状态栏：帧率 + 实时码率
+setInterval(() => {
+  const now = Date.now(), sec = (now - lastStat) / 1000;
+  if (sec >= 0.5) {
+    lastFps = frames / sec;
+    const bps = bytes * 8 / sec;   // bit/s
+    stat.innerHTML = connected
+      ? `<b>${bps >= 1e6 ? (bps / 1e6).toFixed(2) + ' Mbps' : (bps / 1e3).toFixed(0) + ' Kbps'}</b> · ${lastFps.toFixed(1)}fps · ${rtt != null ? rtt + 'ms' : '…'}`
+      : '未连接';
+    bytes = 0; frames = 0; lastStat = now;
+  }
+}, 500);
+
+// 自动横屏：进入全屏并锁定横屏（iOS 不支持时提示手动旋转）
+async function goLandscape() {
+  try {
+    if (!document.fullscreenElement && document.documentElement.requestFullscreen)
+      await document.documentElement.requestFullscreen();
+    if (screen.orientation && screen.orientation.lock)
+      await screen.orientation.lock('landscape');
+  } catch (e) {
+    if (!touched) tip.style.display = 'block';
+  }
+}
+document.getElementById('fsBtn').onclick = goLandscape;
+
+// 铺满/适配切换：铺满=填满页面（裁掉超出部分），适配=完整显示（可能留黑边）
+// JS 显式设置画布尺寸（canvas 不支持 object-fit，CSS 拉伸会导致点击偏移）
+let fillMode = true;
+let lastAutoQ = 0;  // 已废弃：自动升清已移除，保留变量避免旧缓存页面报错
+function layout() {
+  if (!cv.width) return;
+  const rw = wrap.clientWidth, rh = wrap.clientHeight;
+  const scale = fillMode ? Math.max(rw / cv.width, rh / cv.height)
+                         : Math.min(rw / cv.width, rh / cv.height);
+  cv.style.width = Math.round(cv.width * scale) + 'px';
+  cv.style.height = Math.round(cv.height * scale) + 'px';
+  // 清晰度只由用户手动选择，不自动调整（自动升清会覆盖手选值并导致画面反复重适配）
+  if (zoom > 1) applyZoom();   // 窗口变化后重新夹取平移限位
+}
+window.addEventListener('resize', layout);
+// 手机输入法弹出/收起只改 visualViewport，不触发 window.resize
+if (window.visualViewport) visualViewport.addEventListener('resize', layout);
+document.getElementById('fillBtn').onclick = function () {
+  fillMode = !fillMode;
+  this.textContent = fillMode ? '铺满' : '适配';
+  this.classList.toggle('on', fillMode);
+  layout();
+};
+
+// ---------- 缩放（测试版专用）：双指捏合缩放 + 中点拖动平移，工具栏按钮微调 ----------
+// 通过 CSS transform 实现；norm() 基于 getBoundingClientRect（含 transform），
+// 缩放/平移后触摸坐标自动正确映射，无需改任何输入逻辑
+let zoom = 1, panX = 0, panY = 0;
+const ZOOM_MIN = 1, ZOOM_MAX = 4;
+function applyZoom() {
+  if (zoom < ZOOM_MIN) zoom = ZOOM_MIN;
+  if (zoom > ZOOM_MAX) zoom = ZOOM_MAX;
+  if (zoom <= 1) { zoom = 1; panX = 0; panY = 0; }
+  else {
+    // 平移限位：画面边缘不缩进可视区（中心锚定）
+    const hx = Math.max(0, (cv.offsetWidth * zoom - wrap.clientWidth) / 2);
+    const hy = Math.max(0, (cv.offsetHeight * zoom - wrap.clientHeight) / 2);
+    panX = Math.max(-hx, Math.min(hx, panX));
+    panY = Math.max(-hy, Math.min(hy, panY));
+  }
+  cv.style.transform = zoom > 1
+    ? 'translate(' + Math.round(panX) + 'px,' + Math.round(panY) + 'px) scale(' + zoom + ')'
+    : '';
+  const zl = document.getElementById('zoomLvl');
+  zl.textContent = (Math.round(zoom * 10) / 10).toString().replace(/\.0$/, '') + '×';
+  zl.classList.toggle('on', zoom > 1);
+}
+function zoomAt(ax, ay, factor) {
+  // 以视口点 (ax,ay) 为锚缩放：保持锚点下的画面内容不动
+  const wr = wrap.getBoundingClientRect();
+  const bx = wr.left + wr.width / 2, by = wr.top + wr.height / 2;   // 画布布局中心
+  const nz = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, zoom * factor));
+  if (nz === zoom) { applyZoom(); return; }
+  if (nz <= 1) { zoom = 1; panX = 0; panY = 0; applyZoom(); return; }
+  const ux = (ax - (bx + panX)) / zoom, uy = (ay - (by + panY)) / zoom;
+  zoom = nz;
+  panX = ax - bx - ux * zoom;
+  panY = ay - by - uy * zoom;
+  applyZoom();
+}
+document.getElementById('zoomIn').onclick = function () {
+  const wr = wrap.getBoundingClientRect();
+  zoomAt(wr.left + wr.width / 2, wr.top + wr.height / 2, 1.4);
+};
+document.getElementById('zoomOut').onclick = function () {
+  const wr = wrap.getBoundingClientRect();
+  zoomAt(wr.left + wr.width / 2, wr.top + wr.height / 2, 1 / 1.4);
+};
+document.getElementById('zoomLvl').onclick = function () {
+  zoom = 1; panX = 0; panY = 0; applyZoom();
+};
+
+// 希沃白板式触摸：指针只在点击时传送；滑动不移动指针；长按拖动=拖拽
+function norm(e) {
+  // 画布显示尺寸 = 实际绘制区域（所见即所得），线性映射即可
+  const r = cv.getBoundingClientRect();
+  return {
+    x: Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)),
+    y: Math.min(1, Math.max(0, (e.clientY - r.top) / r.height))
+  };
+}
+let touch = null;          // {p0, t0, dragging, last}
+const TAP_MS = 300, TAP_PX = 0.012, HOLD_MS = 350;
+
+// ---------- 移动事件节流合并：高频 move 只发最新位置（约 30 次/秒），防事件风暴 ----------
+let movePending = null, moveTimer = null;
+function queueMove(p) {
+  movePending = p;
+  if (!moveTimer) moveTimer = setTimeout(() => {
+    moveTimer = null;
+    if (movePending) { send({t: 'move', x: movePending.x, y: movePending.y}); movePending = null; }
+  }, 33);
+}
+
+wrap.addEventListener('touchstart', e => {
+  e.preventDefault();
+  touched = true;
+  if (e.touches.length === 1) {
+    const p = norm(e.touches[0]);
+    touch = {p0: p, t0: Date.now(), dragging: false, last: p, holdTimer: setTimeout(() => {
+      // 长按：在原点按下进入拖拽
+      if (touch && !touch.dragging) {
+        touch.dragging = true;
+        send({t: 'down', btn: 0, x: touch.p0.x, y: touch.p0.y});
+      }
+    }, HOLD_MS)};
+  } else if (e.touches.length >= 2) {
+    clearTimeout(touch && touch.holdTimer);
+    if (touch && touch.dragging) send({t: 'up', btn: 0});
+    touch = null;
+    const t0 = e.touches[0], t1 = e.touches[1];
+    const dx = t0.clientX - t1.clientX, dy = t0.clientY - t1.clientY;
+    pinch = {
+      d0: Math.sqrt(dx * dx + dy * dy),
+      dPrev: 0,
+      scrollY: (t0.clientY + t1.clientY) / 2,
+      mPrevX: (t0.clientX + t1.clientX) / 2,
+      mPrevY: (t0.clientY + t1.clientY) / 2,
+      mode: null
+    };
+    twoFinger = true;
+  }
+}, {passive: false});
+
+wrap.addEventListener('touchmove', e => {
+  e.preventDefault();
+  if (twoFinger && pinch && e.touches.length >= 2) {
+    const t0 = e.touches[0], t1 = e.touches[1];
+    const dx = t0.clientX - t1.clientX, dy = t0.clientY - t1.clientY;
+    const d = Math.sqrt(dx * dx + dy * dy);
+    const midX = (t0.clientX + t1.clientX) / 2, midY = (t0.clientY + t1.clientY) / 2;
+    // 手势判别：两指间距明显变化 = 捏合缩放；两指整体平行移动 = 滚轮
+    if (!pinch.mode) {
+      if (pinch.d0 > 24 && d > 24 && Math.abs(d / pinch.d0 - 1) > 0.13) pinch.mode = 'zoom';
+      else if (Math.abs(midY - pinch.scrollY) > 12) pinch.mode = 'scroll';
+    }
+    if (pinch.mode === 'zoom') {
+      // 捏合：间距比例缩放（锚点=两指中点），两指整体滑动=平移查看放大区域
+      if (pinch.dPrev > 24 && d > 24) zoomAt(midX, midY, d / pinch.dPrev);
+      if (zoom > 1) {
+        panX += midX - pinch.mPrevX;
+        panY += midY - pinch.mPrevY;
+        applyZoom();
+      }
+      pinch.dPrev = d;
+      pinch.mPrevX = midX;
+      pinch.mPrevY = midY;
+    } else if (pinch.mode === 'scroll') {
+      const ddy = Math.round((pinch.scrollY - midY) / 45);
+      if (ddy !== 0) { send({t: 'scroll', ddy}); pinch.scrollY = midY; }
+    }
+    return;
+  }
+  if (!touch || e.touches.length !== 1) return;
+  const p = norm(e.touches[0]);
+  const moved = Math.abs(p.x - touch.p0.x) + Math.abs(p.y - touch.p0.y);
+  if (!touch.dragging && moved > TAP_PX && Date.now() - touch.t0 > 120) {
+    // 按住滑出：进入拖拽（从起始点开始）
+    clearTimeout(touch.holdTimer);
+    touch.dragging = true;
+    send({t: 'down', btn: 0, x: touch.p0.x, y: touch.p0.y});
+  }
+  if (touch.dragging) {
+    queueMove(p);           // 节流合并后发送
+    touch.last = p;
+  }
+  // 未长按未滑出的普通滑动：不传送指针
+}, {passive: false});
+
+wrap.addEventListener('touchend', e => {
+  e.preventDefault();
+  clearTimeout(touch && touch.holdTimer);
+  if (twoFinger) {
+    if (e.touches.length < 2) twoFinger = false;
+    if (e.touches.length === 0) { scrollBase = null; pinch = null; }
+    return;
+  }
+  if (touch && e.touches.length === 0) {
+    const dur = Date.now() - touch.t0;
+    if (touch.dragging) {
+      send({t: 'up', btn: 0});                       // 拖拽结束
+    } else if (dur < TAP_MS) {
+      const p = norm(e.changedTouches[0]);
+      send({t: 'click', btn: 0, x: p.x, y: p.y});    // 轻点：指针传送并点击
+    }
+    // 按住未拖未点（长按原地）：不动作
+  }
+  touch = null;
+}, {passive: false});
+wrap.addEventListener('touchcancel', () => {
+  clearTimeout(touch && touch.holdTimer);
+  if (touch && touch.dragging) send({t: 'up', btn: 0});
+  touch = null; twoFinger = false; scrollBase = null; pinch = null;
+});
+// 阻止右键菜单干扰远程右键操作
+wrap.addEventListener('contextmenu', e => e.preventDefault());
+
+// 工具栏按钮
+document.querySelectorAll('#bar [data-btn]').forEach(b =>
+  b.onclick = () => send({t: 'click', btn: +b.dataset.btn, x: 0.5, y: 0.5}));
+document.querySelectorAll('#bar [data-key]').forEach(b =>
+  b.onclick = () => send({t: 'key', key: b.dataset.key}));
+document.querySelectorAll('#bar .sticky').forEach(b =>
+  b.onclick = () => send({t: 'sticky', key: b.dataset.mod}));
+
+// 系统操作：切换主题 / 重启服务器 / 重启电脑 / 关机（三重确认）
+function toast(msg) { tip.style.display = 'block'; tip.textContent = msg; setTimeout(() => { if (connected) tip.style.display = 'none'; }, 5000); }
+document.querySelectorAll('#bar [data-sys]').forEach(b => {
+  b.onclick = async () => {
+    const act = b.dataset.sys;
+    let confirm = false;
+    if (act === 'shutdown') {
+      if (!confirm_3x()) return;
+      confirm = true;
+    } else if (act === 'reboot') {
+      if (!window.confirm('确认远程重启电脑？')) return;
+      confirm = true;
+    } else if (act === 'restart_server') {
+      if (!window.confirm('重启服务器将断开所有连接（含本会话），之后需重新走隐藏门禁。确认？')) return;
+      confirm = true;
+    } else if (act === 'switch_user') {
+      if (!window.confirm('切换用户：电脑屏幕将回到登录/切换用户界面（等同 开始菜单→切换用户），本会话转入后台，画面暂停。切回时用「↩回到此用户」。确认？')) return;
+      confirm = true;
+    } else if (act === 'restart_as_user') {
+      pickRestartUser();
+      return;
+    }
+    try {
+      const r = await fetch('/__remote/sys'+location.search, {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({action: act, confirm: confirm})
+      });
+      const j = await r.json();
+      if (j.error) { alert('❌ ' + j.error); return; }
+      if (j.confirm) return;
+      if (act === 'switch_user') {
+        // 持久提示：画面会停更，直到点「回到此用户」
+        tip.style.display = 'block';
+        tip.innerHTML = '👤 已切换到登录界面。服务器在后台继续运行。<br>切回：点工具栏「↩回到此用户」';
+      } else if (act === 'reconnect_console') {
+        tip.style.display = 'block';
+        tip.textContent = j.msg || '已接回控制台';
+        setTimeout(() => { if (connected) tip.style.display = 'none'; }, 5000);
+      } else {
+        toast(j.msg || (act === 'theme' ? '已切换主题：' + j.theme : '已执行'));
+      }
+    } catch (e) { alert('❌ ' + e.message); }
+  };
+});
+function confirm_3x() {
+  if (!window.confirm('【1/3】确定要远程关机这台电脑吗？')) return false;
+  if (!window.confirm('【2/3】再次确认：电脑将在 5 秒后关机！')) return false;
+  if (!window.confirm('【3/3】最后确认！关机后远程控制将不可用，直到物理开机。确定关机？')) return false;
+  return true;
+}
+// 以用户重启：大号弹窗选择用户 + 实时步骤日志（tip 是 pointer-events:none，不能用 tip 承载按钮）
+const modal = document.getElementById('modal'), musers = document.getElementById('musers'),
+      mlog = document.getElementById('mlog'), mtitle = document.getElementById('mtitle');
+document.getElementById('mclose').onclick = () => modal.classList.remove('show');
+function mlogLine(text, cls) {
+  const d = document.createElement('div');
+  if (cls) d.className = cls;
+  d.textContent = '[' + new Date().toLocaleTimeString('zh-CN', {hour12: false}) + '] ' + text;
+  mlog.appendChild(d);
+  mlog.scrollTop = mlog.scrollHeight;
+}
+function pickRestartUser() {
+  mlog.innerHTML = '';
+  musers.innerHTML = '<div style="color:#8fa3cc;font-size:13px;text-align:center;padding:8px">正在获取用户列表…</div>';
+  mtitle.textContent = '🔁 以指定用户重启';
+  modal.classList.add('show');
+  mlogLine('正在获取本机用户列表…', 'cur');
+  fetch('/__remote/sys'+location.search, {method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({action: 'list_users'})})
+    .then(r => r.json())
+    .then(j => {
+      if (j.error) { mlogLine('❌ 获取失败：' + j.error, 'err'); musers.innerHTML = ''; return; }
+      mlogLine('✅ 找到 ' + j.users.length + ' 个用户：' + j.users.join('、'), 'ok');
+      musers.innerHTML = '';
+      j.users.forEach(u => {
+        const b = document.createElement('div');
+        b.className = 'muser';
+        b.innerHTML = '👤 ' + u + (u === j.me ? '<small>当前登录用户</small>' : '<small>重启后自动登录此用户</small>');
+        b.onclick = () => askRestartAs(u);
+        musers.appendChild(b);
+      });
+    })
+    .catch(e => { mlogLine('❌ 请求失败：' + e.message, 'err'); musers.innerHTML = ''; });
+}
+async function askRestartAs(u) {
+  if (!window.confirm(`以「${u}」用户重启电脑：写入自动登录注册表后重启（约 1 分钟），开机自动登录 ${u}。确认？`)) {
+    mlogLine('已取消（用户拒绝确认）');
+    return;
+  }
+  mlogLine('已选择用户：' + u, 'cur');
+  mlogLine('正在写入自动登录注册表（AutoAdminLogon / DefaultUserName）…', 'cur');
+  try {
+    const r = await fetch('/__remote/sys'+location.search, {method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({action: 'restart_as_user', confirm: true, user: u})});
+    const j = await r.json();
+    if (j.error) { mlogLine('❌ 失败：' + j.error, 'err'); return; }
+    if (j.confirm) { mlogLine('❌ 服务器要求确认但未收到，请重试', 'err'); return; }
+    mlogLine('✅ 注册表写入成功', 'ok');
+    mlogLine('✅ 已发出重启指令：电脑 5 秒后重启，自动登录「' + u + '」', 'ok');
+    mlogLine('⏳ 约 1 分钟后画面恢复；重启后服务器由全局自启动拉起', 'cur');
+    mtitle.textContent = '🔁 已开始重启（自动登录 ' + u + '）';
+    musers.innerHTML = '';
+  } catch (e) {
+    mlogLine('❌ 请求失败：' + e.message, 'err');
+  }
+}
+// 文本发送方式：auto=智能（长文本走剪贴板） type=直接键入 clipboard=剪贴板粘贴
+let txtVia = 'auto';
+const VIA_LABEL = {auto: '⚡自动', type: '⌨直发', clipboard: '📋粘贴'};
+document.getElementById('viaTxt').onclick = () => {
+  txtVia = txtVia === 'auto' ? 'type' : (txtVia === 'type' ? 'clipboard' : 'auto');
+  document.getElementById('viaTxt').textContent = VIA_LABEL[txtVia];
+};
+document.getElementById('sendTxt').onclick = () => {
+  const i = document.getElementById('txt');
+  if (i.value) { send({t: 'text', text: i.value, via: txtVia}); i.value = ''; }
+};
+document.getElementById('txt').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('sendTxt').onclick();
+});
+
+// ---------- 虚拟键盘 ----------
+// 服务端 kdown/kup 为按下/抬起模型：虚拟键按住不放 → 远程 OS 自动重复，松开抬起
+// Ctrl/Alt/Win/Shift 走服务端粘滞键（sticky），按一次锁存、再按一次解除，用后自动清除
+const kbPanel = document.getElementById('kbd');
+const kbBtn = document.getElementById('kbBtn');
+let kbLayer = 'abc';                 // abc | 123
+let shiftOn = false;                 // 由服务端 sticky 广播同步
+const SHIFT_MAP = {'1':'!','2':'@','3':'#','4':'$','5':'%','6':'^','7':'&','8':'*','9':'(','0':')'};
+
+function el(html) { const d = document.createElement('div'); d.innerHTML = html; return d.firstElementChild; }
+function makeKey(label, attr, cls) {
+  return el(`<div class="kb-key ${cls || ''}" ${attr || ''}>${label}</div>`);
+}
+
+function buildKbd() {
+  kbPanel.innerHTML = '';
+  // 扩展键条：常用单键 + 组合键 + F 功能键（横向滚动）
+  const strip = el('<div class="kstrip"></div>');
+  [['Esc','Escape'],['Tab','Tab'],['⇪Caps','CapsLock'],['Del','Delete'],['Home','Home'],['End','End'],
+   ['PgUp','PageUp'],['PgDn','PageDown']].forEach(([lb, k]) =>
+    strip.appendChild(makeKey(lb, `data-vkey="${k}"`, 'dark')));
+  [['Win+D 显示桌面','d','win'],['Alt+Tab 切窗口','tab','alt'],
+   ['Win+E 资源管理','e','win'],['Win+L 锁屏','l','win']].forEach(([lb, k, m]) =>
+    strip.appendChild(makeKey(lb, `data-combo="${k}" data-combomod="${m}"`, 'dark')));
+  for (let i = 1; i <= 12; i++)
+    strip.appendChild(makeKey('F' + i, `data-vkey="F${i}"`, 'dark'));
+  kbPanel.appendChild(strip);
+
+  const isAbc = kbLayer === 'abc';
+  const rows = isAbc
+    ? [['q','w','e','r','t','y','u','i','o','p'],
+       ['a','s','d','f','g','h','j','k','l'],
+       ['z','x','c','v','b','n','m']]
+    : [['1','2','3','4','5','6','7','8','9','0'],
+       ['-','/',':',';','(',')','$','&','@','"'],
+       ['.',',','?','!',"'",'+','=','#']];
+  rows.forEach((r, ri) => {
+    const row = el('<div class="krow"></div>');
+    if (ri === 2)            // 第三行左侧：ABC/123 层切换（两层都有，避免困在数字层）
+      row.appendChild(makeKey(isAbc ? '123' : 'ABC', 'data-layer="1"', 'dark w15'));
+    r.forEach(ch => {
+      const k = makeKey('', `data-vkey="${ch === '"' ? '&quot;' : ch}"`);
+      k.dataset.char = ch;
+      row.appendChild(k);
+    });
+    if (ri === 1)            // 第二行右侧补回车
+      row.appendChild(makeKey('⏎', 'data-vkey="Enter"', 'dark w15'));
+    if (ri === 2)            // 第三行右侧：退格
+      row.appendChild(makeKey('⌫', 'data-vkey="Backspace"', 'dark w15'));
+    kbPanel.appendChild(row);
+  });
+
+  // 底行：修饰键 + 空格 + 方向键
+  const bottom = el('<div class="krow"></div>');
+  bottom.appendChild(makeKey('Ctrl', 'data-mod="ctrl"', 'mod dark'));
+  bottom.appendChild(makeKey('Alt', 'data-mod="alt"', 'mod dark'));
+  bottom.appendChild(makeKey('Win', 'data-mod="win"', 'mod dark'));
+  const sp = makeKey('空格', 'data-vkey="space"', 'sp');
+  bottom.appendChild(sp);
+  const ar = el('<div style="display:flex;gap:3px;flex-direction:column;flex:1.6"></div>');
+  const arUp = el('<div class="krow"></div>');
+  arUp.appendChild(makeKey('▲', 'data-vkey="Up"'));
+  const arDn = el('<div class="krow"></div>');
+  arDn.appendChild(makeKey('◀', 'data-vkey="Left"'));
+  arDn.appendChild(makeKey('▼', 'data-vkey="Down"'));
+  arDn.appendChild(makeKey('▶', 'data-vkey="Right"'));
+  ar.appendChild(arUp); ar.appendChild(arDn);
+  bottom.appendChild(ar);
+  kbPanel.appendChild(bottom);
+  renderCase();
+  kbPanel.querySelectorAll('.kb-key.mod').forEach(k =>
+    k.classList.toggle('on', stickyKeys.includes(k.dataset.mod)));
+}
+
+// 大小写 / 数字行 shift 符号 显示
+function renderCase() {
+  kbPanel.querySelectorAll('[data-char]').forEach(k => {
+    const ch = k.dataset.char;
+    k.textContent = shiftOn ? (ch.length === 1 && /[a-z]/.test(ch) ? ch.toUpperCase()
+                    : (SHIFT_MAP[ch] || ch)) : ch;
+  });
+}
+
+// 粘滞键状态（服务端广播为准）
+let stickyKeys = [];
+function syncSticky(keys) {
+  stickyKeys = keys || [];
+  shiftOn = stickyKeys.includes('shift');
+  document.querySelectorAll('#bar .sticky').forEach(b => b.classList.toggle('on', stickyKeys.includes(b.dataset.mod)));
+  kbPanel.querySelectorAll('.kb-key.mod').forEach(k =>
+    k.classList.toggle('on', stickyKeys.includes(k.dataset.mod)));
+  renderCase();
+}
+
+// 虚拟键按压：按下→kdown，抬手→kup（按住期间远程 OS 自动重复）
+let vkActive = null;   // {el, name}
+function vkPress(k) {
+  k.classList.add('press');
+  if (k.dataset.mod) {                      // 修饰键：切粘滞
+    send({t: 'sticky', key: k.dataset.mod});
+    return;
+  }
+  if (k.dataset.layer) {                    // ABC/123 切换
+    kbLayer = kbLayer === 'abc' ? '123' : 'abc';
+    buildKbd();
+    return;
+  }
+  if (k.dataset.combo) {                    // 一次性组合键（Win+D 等）
+    send({t: 'key', key: k.dataset.combo, mods: {[k.dataset.combomod]: true}});
+    return;
+  }
+  if (k.dataset.vkey) {
+    let name = k.dataset.vkey;
+    // Shift 激活时按显示发送：字母转大写、数字行转上档符号（服务端按字符注入，大小写/符号准确）
+    if (name.length === 1 && shiftOn) {
+      name = /[a-z]/.test(name) ? name.toUpperCase() : (SHIFT_MAP[name] || name);
+    }
+    send({t: 'kdown', key: name});
+    vkActive = {el: k, name: name};
+  }
+}
+function vkRelease() {
+  if (!vkActive) return;
+  send({t: 'kup', key: vkActive.name});
+  vkActive.el.classList.remove('press');
+  vkActive = null;
+}
+if (window.PointerEvent) {
+  kbPanel.addEventListener('pointerdown', e => {
+    const k = e.target.closest('.kb-key');
+    if (!k) return;
+    e.preventDefault();
+    try { k.setPointerCapture(e.pointerId); } catch (_) {}
+    vkPress(k);
+  });
+  kbPanel.addEventListener('pointerup', e => {
+    const k = e.target.closest('.kb-key');
+    if (k && k.dataset.mod) k.classList.remove('press');   // 修饰键点按反馈
+    vkRelease();
+  });
+  kbPanel.addEventListener('pointercancel', vkRelease);
+  kbPanel.addEventListener('pointerleave', vkRelease);
+} else {
+  // 旧浏览器（iOS 12 无 Pointer Events）：touch/鼠标 回退
+  kbPanel.addEventListener('touchstart', e => {
+    const k = e.target.closest('.kb-key');
+    if (!k) return;
+    e.preventDefault();
+    vkPress(k);
+  }, {passive: false});
+  kbPanel.addEventListener('touchend', e => {
+    const k = e.target.closest('.kb-key');
+    if (k && k.dataset.mod) k.classList.remove('press');
+    vkRelease();
+  });
+  kbPanel.addEventListener('touchcancel', vkRelease);
+  kbPanel.addEventListener('mouseleave', vkRelease);
+}
+
+kbBtn.onclick = () => {
+  const show = !kbPanel.classList.contains('show');
+  kbPanel.classList.toggle('show', show);
+  kbBtn.classList.toggle('on', show);
+  buildKbd();
+  layout();          // 画布区域变化后重新计算
+};
+
+// ---------- 电脑端：鼠标精确控制 + 键盘按下/抬起（长按重复由远程 OS 处理，不再事件风暴） ----------
+wrap.addEventListener('mousedown', e => {
+  if (e.target === tip || e.target === document.body) return;
+  const p = norm(e); send({t: 'down', btn: e.button, x: p.x, y: p.y});
+});
+wrap.addEventListener('mouseup', e => {
+  const p = norm(e); send({t: 'up', btn: e.button});
+});
+wrap.addEventListener('mousemove', e => {
+  if (e.buttons || e.pointerType === 'touch') return;
+  queueMove(norm(e));      // 悬停移动同样节流合并
+});
+wrap.addEventListener('wheel', e => {
+  e.preventDefault();
+  send({t: 'scroll', dy: -Math.sign(e.deltaY)});
+}, {passive: false});
+// e.key 兜底：部分安卓输入法上报 Unidentified 时改用 e.code 推导
+function keyNameOf(e) {
+  if (e.key && e.key !== 'Unidentified') return e.key;
+  const c = e.code || '';
+  if (c.startsWith('Key')) return c.slice(3).toLowerCase();
+  if (c.startsWith('Digit')) return c.slice(5);
+  return c;
+}
+window.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  const name = keyNameOf(e);
+  if (!['Shift','Control','Alt','Meta'].includes(name)) e.preventDefault();
+  if (e.repeat) return;  // 长按重复交给远程 OS
+  send({t: 'kdown', key: name, mods: {ctrl: e.ctrlKey, alt: e.altKey, shift: e.shiftKey, win: e.metaKey}});
+  locallyDown.add(name);
+});
+window.addEventListener('keyup', e => {
+  if (e.target.tagName === 'INPUT') return;
+  const name = keyNameOf(e);
+  send({t: 'kup', key: name});
+  locallyDown.delete(name);
+});
+</script>
+</body>
+</html>

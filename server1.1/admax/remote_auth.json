@@ -1,0 +1,8 @@
+{
+  "account": "thisiswhat",
+  "password_salt": "f44ec60ba19963d3148a19eb0f2eb5ba",
+  "password_hash": "4a602a41849e6e4e01be05858b9f4da3fc24ae935fe0bbe1ac2815427e269ee6",
+  "vercode_salt": "70b6f2be6329411895f56e47f339c60e",
+  "vercode_hash": "d175a8c5141c907d97302026e0b3581c702f0fc1483bf7ed507099062455db03",
+  "created": "2026-11-04 22:11:14"
+}

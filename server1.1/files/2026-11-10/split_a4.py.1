@@ -1,0 +1,95 @@
+# -*- coding: utf-8 -*-
+"""
+将 7:1 宇宙飞船表面纹理图裁切为 A4 横向打印页（300 DPI: 3508 x 2480 px）。
+- 等比缩放到 A4 高度 2480px
+- 按 3508px 宽度分页，最后一页不足部分用白色填充并加裁切虚线
+- 每页底部添加页码
+"""
+import os
+from PIL import Image, ImageDraw, ImageFont
+
+SRC_DIR = r"d:\server\server1.1\files\2026-11-10"
+OUT_DIR = os.path.join(SRC_DIR, "a4_print")
+os.makedirs(OUT_DIR, exist_ok=True)
+
+# A4 横向 300 DPI 像素尺寸
+A4_W = 3508
+A4_H = 2480
+
+SOURCES = ["spaceship_hull_01.jpg", "spaceship_hull_02.jpg", "spaceship_hull_03.jpg"]
+
+# 尝试加载字体
+font_paths = [
+    r"C:\Windows\Fonts\arial.ttf",
+    r"C:\Windows\Fonts\msyh.ttc",
+    r"C:\Windows\Fonts\simhei.ttf",
+]
+font = None
+for fp in font_paths:
+    if os.path.exists(fp):
+        try:
+            font = ImageFont.truetype(fp, 48)
+            break
+        except Exception:
+            pass
+if font is None:
+    font = ImageFont.load_default()
+
+
+def split_image(src_path, base_name):
+    img = Image.open(src_path).convert("RGB")
+    w, h = img.size
+    # 缩放到 A4 高度
+    scale = A4_H / h
+    new_w = int(w * scale)
+    img = img.resize((new_w, A4_H), Image.LANCZOS)
+    print(f"{base_name}: original {w}x{h} -> scaled {new_w}x{A4_H}")
+
+    pages = (new_w + A4_W - 1) // A4_W
+    print(f"  -> {pages} A4 pages")
+
+    for i in range(pages):
+        x0 = i * A4_W
+        x1 = min(x0 + A4_W, new_w)
+        crop = img.crop((x0, 0, x1, A4_H))
+
+        # 白底画布
+        page = Image.new("RGB", (A4_W, A4_H), "white")
+        page.paste(crop, (0, 0))
+
+        draw = ImageDraw.Draw(page)
+
+        # 若为最后一页且内容宽度不足 A4_W，画垂直裁切虚线
+        content_w = x1 - x0
+        if content_w < A4_W:
+            # 虚线
+            dash_y_start = 0
+            for y in range(0, A4_H, 40):
+                draw.line([(content_w, y), (content_w, y + 20)], fill=(255, 0, 0), width=2)
+            draw.line([(content_w, 0), (content_w, A4_H)], fill=(255, 0, 0), width=1)
+
+        # 底部页码条
+        label = f"{base_name}  -  Page {i + 1} / {pages}    (trim dashed red line on last page)"
+        # 背景条
+        draw.rectangle([0, A4_H - 90, A4_W, A4_H], fill=(240, 240, 240))
+        draw.text((40, A4_H - 75), label, fill=(0, 0, 0), font=font)
+
+        out_name = f"{base_name}_p{i + 1:02d}_of_{pages}.jpg"
+        out_path = os.path.join(OUT_DIR, out_name)
+        page.save(out_path, "JPEG", quality=95)
+        print(f"    saved {out_name}")
+
+
+def main():
+    for name in SOURCES:
+        src = os.path.join(SRC_DIR, name)
+        if not os.path.exists(src):
+            print(f"skip missing: {src}")
+            continue
+        base = os.path.splitext(name)[0]
+        split_image(src, base)
+    print("DONE ->", OUT_DIR)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Archives / shortcuts
+*.zip
+*.lnk
+OldServer.zip
+
+# Runtime temp
+tmp/
+tmp_t.json
+*.log
+
+# OS
+Thumbs.db
+.DS_Store

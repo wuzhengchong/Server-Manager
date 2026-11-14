@@ -1,0 +1,686 @@
+{"ts": "2026-11-04 21:15:19", "admin": "system", "action": "保存公告", "detail": "505字", "ip": ""}
+{"ts": "2026-11-04 21:18:42", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 21:18:42", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 21:29:24", "admin": "52wyns", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 21:29:43", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 21:31:51", "admin": "wzc", "action": "站长登录成功", "detail": "", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 21:40:04", "admin": "wzc", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-04 21:40:11", "admin": "wzc", "action": "远程控制", "detail": "会话结束 7秒，64帧/4693KB", "ip": ""}
+{"ts": "2026-11-04 21:42:32", "admin": "wzc", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-04 21:43:42", "admin": "wzc", "action": "远程控制", "detail": "会话结束 70秒，638帧/61751KB", "ip": ""}
+{"ts": "2026-11-04 22:12:03", "admin": "thisiswhat", "action": "远程门禁验证失败", "detail": "剩余尝试4", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 22:12:03", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 22:12:18", "admin": "thisiswhat", "action": "远程门禁验证失败", "detail": "剩余尝试3", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 22:12:18", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 22:12:18", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-04 22:12:18", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 0秒，0帧/0KB", "ip": ""}
+{"ts": "2026-11-04 22:20:06", "admin": "wzc", "action": "站长AI对话", "detail": "模型=glm-4.5-air，70字", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 22:20:10", "admin": "wzc", "action": "站长AI对话", "detail": "模型=glm-4.5-air，45字", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 22:20:12", "admin": "wzc", "action": "站长AI对话", "detail": "模型=glm-4.5-air，50字", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 22:20:14", "admin": "wzc", "action": "站长AI对话", "detail": "模型=glm-4.5-air，27013字", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 22:24:53", "admin": "wzc", "action": "站长AI对话", "detail": "模型=glm-4.5-air，16013字", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 22:25:20", "admin": "wzc", "action": "手动压缩核心AI历史", "detail": "8→8条", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 22:30:22", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-04 22:30:23", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-04 22:30:26", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 3秒，15帧/1013KB", "ip": ""}
+{"ts": "2026-11-05 10:22:56", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 10:22:57", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 10:26:55", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 10:26:56", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 10:30:16", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 200秒，696帧/97387KB", "ip": ""}
+{"ts": "2026-11-05 10:35:31", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 754秒，1889帧/221747KB", "ip": ""}
+{"ts": "2026-11-05 12:31:55", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:31:56", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 12:33:45", "admin": "wzc", "action": "站长登录成功", "detail": "", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:34:15", "admin": "wzc", "action": "站长AI对话", "detail": "模型=glm-4.5-air，2字", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:34:35", "admin": "wzc", "action": "站长AI对话", "detail": "模型=glm-4.5-air，11字", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:34:51", "admin": "wzc", "action": "站长AI对话", "detail": "模型=glm-4.5-air，4字", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:36:26", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:36:42", "admin": "wzc", "action": "站长AI对话", "detail": "模型=glm-4.5-air，8字", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:37:15", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 318秒，593帧/79971KB", "ip": ""}
+{"ts": "2026-11-05 12:40:03", "admin": "wzc", "action": "站长AI对话", "detail": "模型=glm-4.5-air，17字", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:40:04", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:40:05", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:40:06", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:50:24", "admin": "thisiswhat", "action": "远程门禁验证失败", "detail": "剩余尝试4", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:50:44", "admin": "thisiswhat", "action": "远程门禁验证失败", "detail": "剩余尝试3", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:51:10", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:51:13", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 12:52:11", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 57秒，313帧/42362KB", "ip": ""}
+{"ts": "2026-11-05 12:52:11", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 12:52:35", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 24秒，144帧/21671KB", "ip": ""}
+{"ts": "2026-11-05 12:52:35", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 12:53:26", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 51秒，265帧/36447KB", "ip": ""}
+{"ts": "2026-11-05 12:53:27", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 12:53:55", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 28秒，154帧/21368KB", "ip": ""}
+{"ts": "2026-11-05 12:54:19", "admin": "wzc", "action": "站长登录成功", "detail": "", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:57:36", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:57:36", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:57:37", "admin": "admin", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:57:39", "admin": "wzc", "action": "远程门禁验证失败", "detail": "剩余尝试2", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:57:42", "admin": "wzc", "action": "远程门禁验证失败", "detail": "剩余尝试1", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 12:57:43", "admin": "wzc", "action": "远程门禁验证失败", "detail": "剩余尝试0", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 13:17:09", "admin": "wzc", "action": "手动压缩核心AI历史", "detail": "16→8条", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 13:29:30", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 13:29:31", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 13:32:44", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 192秒，1038帧/139333KB", "ip": ""}
+{"ts": "2026-11-05 13:32:44", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 13:34:26", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 102秒，468帧/63116KB", "ip": ""}
+{"ts": "2026-11-05 16:46:29", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 16:46:31", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 16:46:32", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 16:46:33", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 16:46:33", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 16:46:34", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 16:46:35", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 16:46:35", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 16:46:36", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 16:46:37", "admin": "wzc", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 16:47:38", "admin": "7892989437796296", "action": "远程门禁验证失败", "detail": "剩余尝试4", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 16:47:39", "admin": "7892989437796296", "action": "远程门禁验证失败", "detail": "剩余尝试3", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 16:47:39", "admin": "7892989437796296", "action": "远程门禁验证失败", "detail": "剩余尝试2", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 16:47:44", "admin": "7892989437796296", "action": "远程门禁验证失败", "detail": "剩余尝试1", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 17:47:00", "admin": "thisiswhat", "action": "远程门禁验证失败", "detail": "剩余尝试4", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 18:05:47", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 18:05:48", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 18:06:07", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 18秒，86帧/11895KB", "ip": ""}
+{"ts": "2026-11-05 19:25:33", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 19:25:33", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 19:25:39", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 19:25:39", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 6秒，57帧/303KB", "ip": ""}
+{"ts": "2026-11-05 19:25:45", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 6秒，87帧/2136KB", "ip": ""}
+{"ts": "2026-11-05 19:25:45", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 19:25:51", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 6秒，88帧/3541KB", "ip": ""}
+{"ts": "2026-11-05 19:25:51", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 19:25:51", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 0秒，0帧/0KB", "ip": ""}
+{"ts": "2026-11-05 19:26:45", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 19:26:45", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 19:26:46", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 0秒，12帧/295KB", "ip": ""}
+{"ts": "2026-11-05 19:27:36", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 19:27:47", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 19:27:47", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 19:27:47", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 0秒，3帧/74KB", "ip": ""}
+{"ts": "2026-11-05 19:31:34", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 19:31:36", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 19:32:01", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 25秒，252帧/4138KB", "ip": ""}
+{"ts": "2026-11-05 19:34:23", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 19:35:34", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 19:35:36", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 19:38:04", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 148秒，1499帧/35581KB", "ip": ""}
+{"ts": "2026-11-05 19:54:19", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 19:54:30", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 10秒，119帧/1912KB", "ip": ""}
+{"ts": "2026-11-05 19:57:05", "admin": "tgisiswhat", "action": "远程门禁验证失败", "detail": "剩余尝试4", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 19:57:27", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 19:57:28", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 19:58:21", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 52秒，315帧/7766KB", "ip": ""}
+{"ts": "2026-11-05 20:24:00", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:24:00", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-Location | Select-Object -ExpandProperty Path", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:24:00", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-ChildItem D:\\server\\server1.1\\tmp | Measure-Object | Select-Object -ExpandProperty Count", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:24:01", "admin": "thisiswhat", "action": "远程命令", "detail": "Write-Output '中文输出测试 OK'", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:24:01", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-Item D:\\不存在的文件xyz", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:46:21", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:46:32", "admin": "thisiswhat", "action": "远程命令", "detail": "where python", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:46:49", "admin": "thisiswhat", "action": "远程命令", "detail": "taskkill /im python.exe /t /f", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:52:34", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:53:08", "admin": "thisiswhat", "action": "远程命令", "detail": "cd server1.1\\themes", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:53:11", "admin": "thisiswhat", "action": "远程命令", "detail": "ls", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:53:26", "admin": "thisiswhat", "action": "远程命令", "detail": "ls server1.1\\themes", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:53:47", "admin": "thisiswhat", "action": "远程命令", "detail": "D:\\server\\server1.1\\themes\\切换无主题.bat", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:56:40", "admin": "thisiswhat", "action": "远程命令", "detail": "color 0a", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:56:48", "admin": "thisiswhat", "action": "远程命令", "detail": "taskmgr", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:57:07", "admin": "thisiswhat", "action": "远程命令", "detail": "ps", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 20:57:23", "admin": "thisiswhat", "action": "远程命令", "detail": "ps", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 21:39:00", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 21:39:00", "admin": "thisiswhat", "action": "远程命令需确认", "detail": "shutdown /r /t 0", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 21:39:00", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /?", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 21:39:01", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-Location | Select-Object -ExpandProperty Path", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 21:39:18", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 21:39:18", "admin": "thisiswhat", "action": "远程命令需确认", "detail": "shutdown /r /t 0", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 21:39:18", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /?", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 21:39:19", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-Location | Select-Object -ExpandProperty Path", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 21:39:31", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 21:39:31", "admin": "thisiswhat", "action": "远程命令需确认", "detail": "shutdown /r /t 0", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 21:39:31", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /?", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 21:39:32", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-Location | Select-Object -ExpandProperty Path", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 21:39:33", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-05 21:39:33", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 0秒，0帧/0KB", "ip": ""}
+{"ts": "2026-11-05 22:25:37", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 22:26:10", "admin": "thisiswhat", "action": "远程命令需确认", "detail": "shutdown /s", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 22:26:22", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /s", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 22:26:31", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /r", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 22:26:41", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /a", "ip": "127.0.0.1"}
+{"ts": "2026-11-05 22:26:44", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /r", "ip": "127.0.0.1"}
+{"ts": "2026-11-06 10:24:05", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 10:24:39", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 10:26:08", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 88秒，692帧/15267KB", "ip": ""}
+{"ts": "2026-11-06 10:26:08", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 10:30:37", "admin": "thisiswhat", "action": "远程命令", "detail": "ps", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 10:31:17", "admin": "thisiswhat", "action": "远程命令", "detail": "taskkill /im HYP.exe /t /f", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 10:31:38", "admin": "thisiswhat", "action": "远程命令", "detail": "taskkill /im HYPHelper.exe /t /f", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 10:31:41", "admin": "thisiswhat", "action": "远程命令", "detail": "ps", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 10:32:24", "admin": "thisiswhat", "action": "远程命令", "detail": "ps.exe", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 10:32:49", "admin": "thisiswhat", "action": "远程命令", "detail": "ps.exe -c {\"taskkill /im HYP.exe /t /f\"}", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 10:33:09", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 10:33:36", "admin": "thisiswhat", "action": "远程命令", "detail": "taskmgr", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 10:33:41", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 10:35:25", "admin": "thisiswhat", "action": "远程命令", "detail": "ps", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 10:35:45", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /r", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 10:35:51", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 582秒，3762帧/25342KB", "ip": ""}
+{"ts": "2026-11-06 10:35:51", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 10:36:06", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /a", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 10:36:13", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 184秒，456帧/11272KB", "ip": ""}
+{"ts": "2026-11-06 10:36:13", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 10:36:33", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /r", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 10:36:47", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /help", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 12:45:27", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 12:45:32", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 12:45:45", "admin": "thisiswhat", "action": "远程命令", "detail": "1", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 12:45:53", "admin": "thisiswhat", "action": "远程命令", "detail": "ps", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 12:46:27", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-Process", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 12:47:37", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /r /t 1", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 12:50:29", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 12:50:33", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 12:51:07", "admin": "thisiswhat", "action": "远程命令", "detail": "Trae.exe", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 12:54:11", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-Content .\\server1.1\\server.py", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 12:54:33", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 239秒，109帧/2938KB", "ip": ""}
+{"ts": "2026-11-06 12:54:59", "admin": "thisiswhat", "action": "远程命令", "detail": "ls ./server1.1", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 12:55:19", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-content .\\server1.1\\remote.py", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 12:57:07", "admin": "thisiswhat", "action": "远程命令", "detail": "git", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:01:55", "admin": "thisiswhat", "action": "远程命令", "detail": "ls D:\\server\\server1.1\\files\\", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:02:10", "admin": "thisiswhat", "action": "远程命令", "detail": "D:\\server\\server1.1\\files\\2026-11-06", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:02:21", "admin": "thisiswhat", "action": "远程命令", "detail": "ls D:\\server\\server1.1\\files\\2026-11-06", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:03:33", "admin": "thisiswhat", "action": "远程命令", "detail": "clone D:\\server\\server1.1\\files\\2026-11-06\\usbmmidd_v2.zip D:\\server", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:03:43", "admin": "thisiswhat", "action": "远程命令", "detail": "clone-item", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:04:49", "admin": "thisiswhat", "action": "远程命令", "detail": "ls .\\server1.1\\themes", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:05:08", "admin": "thisiswhat", "action": "远程命令", "detail": "get-content .\\server1.1\\themes\\切换无主题.bat", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:05:28", "admin": "thisiswhat", "action": "远程命令", "detail": "copy D:\\server\\server1.1\\files\\2026-11-06\\usbmmidd_v2.zip D:\\server\\1.zip", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:05:32", "admin": "thisiswhat", "action": "远程命令", "detail": "ls", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:06:05", "admin": "thisiswhat", "action": "远程命令", "detail": "zip", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:08:06", "admin": "thisiswhat", "action": "远程命令", "detail": "Expand-Archive 1.zip -DestinationPath usbmmidd", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:08:30", "admin": "thisiswhat", "action": "远程命令", "detail": "ls usbmmidd", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:08:39", "admin": "thisiswhat", "action": "远程命令", "detail": "ls usbmmidd_v2", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:09:54", "admin": "thisiswhat", "action": "远程命令", "detail": "ls usbmmidd\\usbmmidd_v2", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:10:35", "admin": "thisiswhat", "action": "远程命令", "detail": ".\\deviceinstaller64.exe install .\\usbmmidd\\usbmmidd_v2\\usbmmIdd.inf usbmmidd", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:12:02", "admin": "thisiswhat", "action": "远程命令", "detail": ".\\usbmmidd\\usbmmidd_v2\\deviceinstaller64.exe install .\\usbmmidd\\usbmmidd_v2\\usbmmIdd.inf usbmmidd", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:13:11", "admin": "thisiswhat", "action": "远程命令", "detail": ".\\usbmmidd\\usbmmidd_v2\\deviceinstaller64.exe enableidd 1", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:13:18", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-PnpDevice -Class Monitor", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:14:16", "admin": "thisiswhat", "action": "远程命令", "detail": "# 开启远程桌面 Set-ItemProperty -Path 'HKLM:\\System\\CurrentControlSet\\Control\\Terminal Server' -Name fDenyTSConnections -Value 0 # 开启防火墙RDP规则 Enable-NetFirewallRule -DisplayGroup \"Remote Desktop\" # 关键注册表：允许", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:24:02", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:24:36", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-PnpDevice -Class Monitor", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:24:51", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 13:32:35", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-06 13:32:36", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 13:32:42", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 5秒，88帧/4873KB", "ip": ""}
+{"ts": "2026-11-06 13:33:42", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:33:49", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 13:35:03", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-06 13:38:32", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 283秒，1065帧/26383KB", "ip": ""}
+{"ts": "2026-11-06 13:38:32", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 13:38:57", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 24秒，176帧/3553KB", "ip": ""}
+{"ts": "2026-11-06 13:38:57", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 13:39:16", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 19秒，191帧/3947KB", "ip": ""}
+{"ts": "2026-11-06 13:39:17", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 13:40:23", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-06 13:44:52", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 335秒，2039帧/46532KB", "ip": ""}
+{"ts": "2026-11-06 13:44:52", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 13:44:52", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-06 13:47:34", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 162秒，1641帧/186451KB", "ip": ""}
+{"ts": "2026-11-06 13:47:34", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 13:48:05", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:48:11", "admin": "thisiswhat", "action": "远程命令", "detail": "ps", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:48:15", "admin": "thisiswhat", "action": "远程命令", "detail": "ps.exe", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:48:32", "admin": "thisiswhat", "action": "远程命令", "detail": "taskmgr", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:49:16", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /r", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:49:17", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /a", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 13:49:24", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /r /t 1", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 15:56:47", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "222.16.81.207"}
+{"ts": "2026-11-06 15:56:53", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 15:57:10", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 17秒，1帧/30KB", "ip": ""}
+{"ts": "2026-11-06 17:02:59", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "222.16.81.205"}
+{"ts": "2026-11-06 17:03:02", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 17:07:13", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 251秒，3183帧/223368KB", "ip": ""}
+{"ts": "2026-11-06 18:32:03", "admin": "thisiswhat", "action": "远程门禁验证失败", "detail": "剩余尝试4", "ip": "111.55.211.195"}
+{"ts": "2026-11-06 18:32:27", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "111.55.211.195"}
+{"ts": "2026-11-06 18:32:34", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 18:38:17", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-06 18:38:17", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 18:38:17", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 0秒，2帧/51KB", "ip": ""}
+{"ts": "2026-11-06 18:38:31", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-06 18:38:31", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 18:38:31", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 0秒，1帧/27KB", "ip": ""}
+{"ts": "2026-11-06 18:38:40", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "111.55.211.195"}
+{"ts": "2026-11-06 18:38:43", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 18:38:59", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-06 18:38:59", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 18:39:02", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-Clipboard", "ip": "127.0.0.1"}
+{"ts": "2026-11-06 18:39:02", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 2秒，1帧/25KB", "ip": ""}
+{"ts": "2026-11-06 18:41:12", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 149秒，574帧/19745KB", "ip": ""}
+{"ts": "2026-11-06 18:43:08", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-06 18:43:08", "admin": "thisiswhat", "action": "切换主题", "detail": "→ 爱沃 LoveVodyanitsa", "ip": "127.0.0.1"}
+{"ts": "2026-11-06 18:43:08", "admin": "thisiswhat", "action": "切换主题", "detail": "→ 无主题（我的服务器）", "ip": "127.0.0.1"}
+{"ts": "2026-11-06 19:03:44", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.29"}
+{"ts": "2026-11-06 19:04:15", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 19:04:44", "admin": "thisiswhat", "action": "切换主题", "detail": "→ 爱沃 LoveVodyanitsa", "ip": "123.90.22.29"}
+{"ts": "2026-11-06 19:04:47", "admin": "thisiswhat", "action": "切换主题", "detail": "→ 无主题（我的服务器）", "ip": "123.90.22.29"}
+{"ts": "2026-11-06 19:04:50", "admin": "thisiswhat", "action": "远程重启服务器", "detail": "", "ip": "123.90.22.29"}
+{"ts": "2026-11-06 19:05:00", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 44秒，316帧/42186KB", "ip": ""}
+{"ts": "2026-11-06 19:05:01", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 19:05:05", "admin": "thisiswhat", "action": "远程重启服务器", "detail": "", "ip": "123.90.22.29"}
+{"ts": "2026-11-06 19:05:12", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 11秒，71帧/3558KB", "ip": ""}
+{"ts": "2026-11-06 19:05:12", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 19:05:13", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 0秒，8帧/123KB", "ip": ""}
+{"ts": "2026-11-06 20:45:23", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.29"}
+{"ts": "2026-11-06 20:49:46", "admin": "thisiswhat", "action": "清空短信收件箱", "detail": "", "ip": "123.90.22.29"}
+{"ts": "2026-11-06 20:59:19", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.29"}
+{"ts": "2026-11-06 22:26:05", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.29"}
+{"ts": "2026-11-06 22:30:31", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.29"}
+{"ts": "2026-11-06 22:31:56", "admin": "thisiswhat", "action": "手机自动解锁", "detail": "107765a9aeea982e-PGZ110", "ip": "123.90.22.29"}
+{"ts": "2026-11-06 22:35:55", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-06 22:36:53", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.29"}
+{"ts": "2026-11-07 07:15:37", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.93"}
+{"ts": "2026-11-07 07:29:46", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.93"}
+{"ts": "2026-11-07 07:30:10", "admin": "thisiswhat", "action": "清空短信收件箱", "detail": "", "ip": "123.90.22.93"}
+{"ts": "2026-11-07 08:07:45", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.93"}
+{"ts": "2026-11-07 11:09:07", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.93"}
+{"ts": "2026-11-07 12:49:31", "admin": "123456", "action": "站长登录失败", "detail": "账号或密码错误", "ip": "127.0.0.1"}
+{"ts": "2026-11-07 13:17:59", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.93"}
+{"ts": "2026-11-07 16:43:58", "admin": "root", "action": "远程门禁验证失败", "detail": "剩余尝试4", "ip": "127.0.0.1"}
+{"ts": "2026-11-07 16:51:39", "admin": "?", "action": "远程门禁验证失败", "detail": "剩余尝试3", "ip": "127.0.0.1"}
+{"ts": "2026-11-07 16:55:41", "admin": "?", "action": "远程门禁验证失败", "detail": "剩余尝试3", "ip": "127.0.0.1"}
+{"ts": "2026-11-07 16:57:32", "admin": "?", "action": "远程门禁验证失败", "detail": "剩余尝试2", "ip": "127.0.0.1"}
+{"ts": "2026-11-07 16:58:53", "admin": "1", "action": "远程门禁验证失败", "detail": "剩余尝试1", "ip": "127.0.0.1"}
+{"ts": "2026-11-07 17:03:27", "admin": "1", "action": "远程门禁验证失败", "detail": "剩余尝试1", "ip": "127.0.0.1"}
+{"ts": "2026-11-07 17:04:11", "admin": "1", "action": "远程门禁验证失败", "detail": "剩余尝试0", "ip": "127.0.0.1"}
+{"ts": "2026-11-07 17:05:22", "admin": "?", "action": "远程门禁锁定", "detail": "IP=127.0.0.1", "ip": "127.0.0.1"}
+{"ts": "2026-11-07 17:06:44", "admin": "1", "action": "远程门禁验证失败", "detail": "剩余尝试0", "ip": "127.0.0.1"}
+{"ts": "2026-11-07 17:07:10", "admin": "?", "action": "远程门禁锁定", "detail": "IP=127.0.0.1", "ip": "127.0.0.1"}
+{"ts": "2026-11-07 17:07:19", "admin": "?", "action": "远程门禁锁定", "detail": "IP=127.0.0.1", "ip": "127.0.0.1"}
+{"ts": "2026-11-07 17:12:13", "admin": "1", "action": "远程门禁验证失败", "detail": "剩余尝试1", "ip": "127.0.0.1"}
+{"ts": "2026-11-07 19:13:55", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.93"}
+{"ts": "2026-11-07 19:14:19", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-07 19:14:31", "admin": "thisiswhat", "action": "远程关机", "detail": "", "ip": "123.90.22.93"}
+{"ts": "2026-11-08 10:49:32", "admin": "thisiswhat", "action": "管理器登录成功", "detail": "桌面管理器", "ip": "127.0.0.1"}
+{"ts": "2026-11-08 10:50:14", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-08 10:50:20", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 6秒，73帧/6568KB", "ip": ""}
+{"ts": "2026-11-10 05:17:11", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.93"}
+{"ts": "2026-11-10 05:17:19", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 05:18:06", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 47秒，376帧/11684KB", "ip": ""}
+{"ts": "2026-11-10 05:46:06", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 05:47:13", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 66秒，315帧/9221KB", "ip": ""}
+{"ts": "2026-11-10 06:16:50", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 06:16:59", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 8秒，72帧/5292KB", "ip": ""}
+{"ts": "2026-11-10 06:17:37", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 06:18:30", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 52秒，92帧/4583KB", "ip": ""}
+{"ts": "2026-11-10 06:18:31", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 06:19:19", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 47秒，74帧/5898KB", "ip": ""}
+{"ts": "2026-11-10 06:19:28", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 06:20:14", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 45秒，84帧/4168KB", "ip": ""}
+{"ts": "2026-11-10 10:26:33", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 10:27:06", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 10:27:18", "admin": "thisiswhat", "action": "远程命令", "detail": "ls", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 10:27:56", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 10:28:04", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 10:28:13", "admin": "thisiswhat", "action": "远程重启电脑", "detail": "", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 10:32:45", "admin": "whatisthat", "action": "远程门禁验证失败", "detail": "剩余尝试4", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 10:33:48", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 10:37:20", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "120.238.101.238"}
+{"ts": "2026-11-10 10:39:57", "admin": "thisiswhat", "action": "留言板留言", "detail": "你好，我在服务器给你留言了，希望你能收到。我这边有点冷，提瓦特怎么样？永远爱你。", "ip": "120.238.101.238"}
+{"ts": "2026-11-10 10:41:14", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "120.238.101.238"}
+{"ts": "2026-11-10 10:41:57", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "120.238.101.238"}
+{"ts": "2026-11-10 10:42:09", "admin": "thisiswhat", "action": "远程命令", "detail": "ls", "ip": "120.238.101.238"}
+{"ts": "2026-11-10 10:43:49", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-10 10:48:18", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 10:48:25", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 11:25:58", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 2252秒，20686帧/1740069KB", "ip": ""}
+{"ts": "2026-11-10 12:49:08", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 12:50:47", "admin": "thisiswhat", "action": "留言板留言", "detail": "谢谢！我看到了，现在是中午，有点困，但是要干别的事。你记得睡好觉", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 12:51:05", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 12:51:08", "admin": "thisiswhat", "action": "切换主题", "detail": "→ 无主题（我的服务器）", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 12:51:15", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 9秒，1帧/25KB", "ip": ""}
+{"ts": "2026-11-10 12:51:16", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 12:51:26", "admin": "thisiswhat", "action": "远程重启服务器", "detail": "", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 12:52:08", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 12:52:19", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 12:52:30", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 11秒，1帧/25KB", "ip": ""}
+{"ts": "2026-11-10 12:52:31", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 13:37:47", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 2716秒，11317帧/851099KB", "ip": ""}
+{"ts": "2026-11-10 13:40:25", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 13:40:30", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 13:47:54", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 443秒，110帧/6237KB", "ip": ""}
+{"ts": "2026-11-10 13:47:55", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 13:48:04", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 9秒，3帧/54KB", "ip": ""}
+{"ts": "2026-11-10 13:48:14", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 13:50:55", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 160秒，1163帧/62749KB", "ip": ""}
+{"ts": "2026-11-10 15:14:57", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 15:15:54", "admin": "thisiswhat", "action": "留言板留言", "detail": "永远爱你...回去一定要抱到爽", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 15:16:17", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 15:16:20", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 3秒，2帧/59KB", "ip": ""}
+{"ts": "2026-11-10 15:16:31", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 15:18:19", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 107秒，691帧/27421KB", "ip": ""}
+{"ts": "2026-11-10 15:18:27", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 15:18:39", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 11秒，73帧/2931KB", "ip": ""}
+{"ts": "2026-11-10 15:18:45", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 15:19:41", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 55秒，125帧/13670KB", "ip": ""}
+{"ts": "2026-11-10 15:20:24", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-10 15:20:38", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 15:21:27", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 49秒，215帧/19183KB", "ip": ""}
+{"ts": "2026-11-10 15:23:20", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-10 15:23:30", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 15:45:09", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 1299秒，16624帧/583964KB", "ip": ""}
+{"ts": "2026-11-10 18:02:06", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "127.0.0.1"}
+{"ts": "2026-11-10 18:02:14", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 18:03:21", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 66秒，480帧/40168KB", "ip": ""}
+{"ts": "2026-11-10 18:04:36", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 18:08:42", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 245秒，1465帧/47435KB", "ip": ""}
+{"ts": "2026-11-10 22:49:43", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 22:49:51", "admin": "thisiswhat", "action": "切换主题", "detail": "→ 爱沃 LoveVodyanitsa", "ip": "127.0.0.1"}
+{"ts": "2026-11-10 22:50:15", "admin": "thisiswhat", "action": "切换主题", "detail": "→ 无主题（我的服务器）", "ip": "127.0.0.1"}
+{"ts": "2026-11-10 22:54:27", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 22:54:34", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 7秒，105帧/4178KB", "ip": ""}
+{"ts": "2026-11-10 22:54:38", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 22:54:42", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 4秒，64帧/3098KB", "ip": ""}
+{"ts": "2026-11-10 22:54:45", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 22:54:48", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 3秒，47帧/2312KB", "ip": ""}
+{"ts": "2026-11-10 22:54:51", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 22:54:55", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 3秒，55帧/2724KB", "ip": ""}
+{"ts": "2026-11-10 22:55:03", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 22:55:37", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 34秒，478帧/18434KB", "ip": ""}
+{"ts": "2026-11-10 22:56:34", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 410秒，5047帧/251788KB", "ip": ""}
+{"ts": "2026-11-10 22:57:57", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 22:59:36", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 98秒，1069帧/78683KB", "ip": ""}
+{"ts": "2026-11-10 23:01:49", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 23:03:03", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 73秒，979帧/34976KB", "ip": ""}
+{"ts": "2026-11-10 23:13:58", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.93"}
+{"ts": "2026-11-10 23:14:06", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 23:21:57", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 471秒，4303帧/267990KB", "ip": ""}
+{"ts": "2026-11-10 23:38:41", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-10 23:39:39", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 58秒，748帧/37523KB", "ip": ""}
+{"ts": "2026-11-11 00:58:55", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "123.90.22.93"}
+{"ts": "2026-11-11 00:59:03", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 00:59:40", "admin": "thisiswhat", "action": "远程关机", "detail": "", "ip": "123.90.22.93"}
+{"ts": "2026-11-11 10:23:29", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 10:23:39", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 10:23:48", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 8秒，5帧/144KB", "ip": ""}
+{"ts": "2026-11-11 10:23:55", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 10:26:53", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 177秒，1682帧/58951KB", "ip": ""}
+{"ts": "2026-11-11 10:28:26", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 10:28:48", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 10:29:14", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 26秒，0帧/0KB", "ip": ""}
+{"ts": "2026-11-11 10:30:40", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "120.238.101.238"}
+{"ts": "2026-11-11 10:31:46", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 10:33:46", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "120.238.101.238"}
+{"ts": "2026-11-11 10:34:52", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 10:34:55", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 10:35:05", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 10秒，0帧/0KB", "ip": ""}
+{"ts": "2026-11-11 10:35:09", "admin": "thisiswhat", "action": "远程命令", "detail": "ls", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 10:35:38", "admin": "thisiswhat", "action": "远程命令", "detail": "ls", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 10:35:45", "admin": "thisiswhat", "action": "远程命令", "detail": "1", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 10:35:58", "admin": "thisiswhat", "action": "远程命令", "detail": "shutdown /r /t 1", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 10:38:16", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 10:38:39", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 10:39:20", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 40秒，78帧/1166KB", "ip": ""}
+{"ts": "2026-11-11 12:41:09", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "210.21.60.58"}
+{"ts": "2026-11-11 12:41:48", "admin": "thisiswhat", "action": "远程命令", "detail": "runas /user:137__TRAE", "ip": "210.21.60.58"}
+{"ts": "2026-11-11 12:41:53", "admin": "thisiswhat", "action": "远程命令", "detail": "runas", "ip": "210.21.60.58"}
+{"ts": "2026-11-11 12:42:00", "admin": "thisiswhat", "action": "远程命令", "detail": "runas /help", "ip": "210.21.60.58"}
+{"ts": "2026-11-11 12:42:10", "admin": "thisiswhat", "action": "远程命令", "detail": "runas --help", "ip": "210.21.60.58"}
+{"ts": "2026-11-11 12:42:23", "admin": "thisiswhat", "action": "远程命令", "detail": "ls d", "ip": "210.21.60.58"}
+{"ts": "2026-11-11 12:42:28", "admin": "thisiswhat", "action": "远程命令", "detail": "ls d:\\", "ip": "210.21.60.58"}
+{"ts": "2026-11-11 12:43:00", "admin": "thisiswhat", "action": "远程命令", "detail": "runas /user:137__TRAE d:\\TraeCN__137\\trae.exe", "ip": "210.21.60.58"}
+{"ts": "2026-11-11 12:43:21", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 12:44:03", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 41秒，136帧/3579KB", "ip": ""}
+{"ts": "2026-11-11 12:48:02", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 12:48:23", "admin": "thisiswhat", "action": "远程命令", "detail": "query session", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 12:51:03", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:01:47", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:03:06", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:03:13", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 6秒，87帧/2618KB", "ip": ""}
+{"ts": "2026-11-11 13:03:13", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:04:08", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 54秒，156帧/10099KB", "ip": ""}
+{"ts": "2026-11-11 13:04:08", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:04:15", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 6秒，14帧/397KB", "ip": ""}
+{"ts": "2026-11-11 13:04:16", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:07:20", "admin": "thisiswhat", "action": "远程切换用户", "detail": "", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:07:26", "admin": "thisiswhat", "action": "会话接回控制台", "detail": "sid=1", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:14:32", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 616秒，1177帧/96296KB", "ip": ""}
+{"ts": "2026-11-11 13:14:35", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:14:42", "admin": "thisiswhat", "action": "会话接回控制台", "detail": "sid=1", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:15:32", "admin": "thisiswhat", "action": "会话接回控制台", "detail": "sid=1", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:18:16", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 221秒，151帧/7593KB", "ip": ""}
+{"ts": "2026-11-11 13:18:17", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:18:51", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:19:06", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 15秒，4帧/209KB", "ip": ""}
+{"ts": "2026-11-11 13:19:27", "admin": "thisiswhat", "action": "远程命令", "detail": "query session", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:20:04", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 107秒，15帧/608KB", "ip": ""}
+{"ts": "2026-11-11 13:20:09", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:20:12", "admin": "thisiswhat", "action": "会话接回控制台", "detail": "sid=1", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:21:34", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 84秒，173帧/4933KB", "ip": ""}
+{"ts": "2026-11-11 13:21:37", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:21:46", "admin": "thisiswhat", "action": "会话接回控制台", "detail": "sid=1", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:21:47", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 9秒，20帧/511KB", "ip": ""}
+{"ts": "2026-11-11 13:21:48", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:24:18", "admin": "thisiswhat", "action": "远程命令", "detail": "reg add \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\" /v LimitBlankPasswordUse /t REG_DWORD /d 0 /f", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:34:03", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:34:14", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:35:22", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 67秒，54帧/3296KB", "ip": ""}
+{"ts": "2026-11-11 13:35:22", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:37:25", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 122秒，216帧/12271KB", "ip": ""}
+{"ts": "2026-11-11 13:37:25", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:38:48", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 82秒，652帧/29795KB", "ip": ""}
+{"ts": "2026-11-11 13:38:48", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:38:54", "admin": "thisiswhat", "action": "以用户重启", "detail": "自动登录 137__TRAE", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:41:31", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:41:37", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:41:47", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 9秒，11帧/191KB", "ip": ""}
+{"ts": "2026-11-11 13:41:50", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-11 13:42:29", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 39秒，14帧/244KB", "ip": ""}
+{"ts": "2026-11-11 13:42:49", "admin": "thisiswhat", "action": "远程命令", "detail": "query session", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:43:53", "admin": "thisiswhat", "action": "远程命令", "detail": "query session", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:44:09", "admin": "thisiswhat", "action": "远程命令", "detail": "tscon 1 /dest:console", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:44:24", "admin": "thisiswhat", "action": "远程命令", "detail": "Start-Process powershell -Verb RunAs", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:44:33", "admin": "thisiswhat", "action": "远程命令", "detail": "tscon 1 /dest:console", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 13:44:46", "admin": "thisiswhat", "action": "远程命令", "detail": "reset session 1", "ip": "58.63.47.101"}
+{"ts": "2026-11-11 23:09:24", "admin": "thisiswhat", "action": "远程重启服务器", "detail": "", "ip": "127.0.0.1"}
+{"ts": "2026-11-11 23:10:19", "admin": "thisiswhat", "action": "远程命令", "detail": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" /v DefaultUserName /t REG_SZ /d wzc /f; reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" /v DefaultPassword /t ", "ip": "127.0.0.1"}
+{"ts": "2026-11-11 23:10:59", "admin": "thisiswhat", "action": "远程命令", "detail": "whoami /groups | findstr /i \"S-1-16\"; schtasks /query /tn AiwoServer /xml | findstr /i \"RunLevel LogonType\"", "ip": "127.0.0.1"}
+{"ts": "2026-11-11 23:12:30", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-Process pythonw | Select-Object -ExpandProperty Id", "ip": "127.0.0.1"}
+{"ts": "2026-11-11 23:12:41", "admin": "thisiswhat", "action": "远程命令", "detail": "taskkill /F /PID 20856; Start-Sleep 2; schtasks /Run /TN AiwoServer; Start-Sleep 5; Get-Process pythonw | Select-Object -ExpandProperty Id; whoami /groups | findstr /i S-1-16", "ip": "127.0.0.1"}
+{"ts": "2026-11-11 23:13:16", "admin": "thisiswhat", "action": "远程命令", "detail": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" /v DefaultUserName /t REG_SZ /d wzc /f; reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" /v DefaultPassword /t ", "ip": "127.0.0.1"}
+{"ts": "2026-11-11 23:13:29", "admin": "thisiswhat", "action": "远程命令", "detail": "whoami /groups | findstr /i S-1-16; Get-CimInstance Win32_Process -Filter \"Name='pythonw.exe'\" | Select-Object ProcessId,ParentProcessId,CommandLine | Format-List", "ip": "127.0.0.1"}
+{"ts": "2026-11-11 23:13:47", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-CimInstance Win32_Process -Filter \"ProcessId=18992\" | Select-Object Name,ProcessId | Format-List; net localgroup Administrators; whoami", "ip": "127.0.0.1"}
+{"ts": "2026-11-11 23:15:35", "admin": "thisiswhat", "action": "远程命令", "detail": "taskkill /F /PID 19460", "ip": "127.0.0.1"}
+{"ts": "2026-11-11 23:16:00", "admin": "thisiswhat", "action": "远程命令", "detail": "whoami /groups | findstr /i S-1-16; (Get-CimInstance Win32_Process -Filter \"Name='pythonw.exe'\").ParentProcessId", "ip": "127.0.0.1"}
+{"ts": "2026-11-11 23:16:12", "admin": "thisiswhat", "action": "远程命令", "detail": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" /v DefaultUserName /t REG_SZ /d wzc /f; reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" /v DefaultPassword /t ", "ip": "127.0.0.1"}
+{"ts": "2026-11-12 10:22:24", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 10:23:31", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 10:23:47", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 10:24:12", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 24秒，1帧/31KB", "ip": ""}
+{"ts": "2026-11-12 10:24:18", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 10:25:25", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 67秒，158帧/13940KB", "ip": ""}
+{"ts": "2026-11-12 10:42:40", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 12:31:11", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "210.21.60.58"}
+{"ts": "2026-11-12 12:31:20", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 12:34:19", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 179秒，116帧/2714KB", "ip": ""}
+{"ts": "2026-11-12 12:37:01", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 12:37:05", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 13:10:18", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 1992秒，2647帧/111527KB", "ip": ""}
+{"ts": "2026-11-12 15:02:45", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 15:09:07", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 15:11:28", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "120.238.101.238"}
+{"ts": "2026-11-12 15:11:29", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "120.238.101.238"}
+{"ts": "2026-11-12 15:11:35", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 15:28:21", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "120.238.101.238"}
+{"ts": "2026-11-12 15:28:29", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 15:41:41", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 1805秒，2844帧/124255KB", "ip": ""}
+{"ts": "2026-11-12 15:43:57", "admin": "thisiswhat", "action": "远程命令", "detail": "Get-Process pythonw | ForEach-Object { taskkill /F /PID $_.Id }", "ip": "127.0.0.1"}
+{"ts": "2026-11-12 15:46:19", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "120.238.101.238"}
+{"ts": "2026-11-12 16:00:46", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 16:01:49", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 16:01:57", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 16:03:03", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 65秒，133帧/3653KB", "ip": ""}
+{"ts": "2026-11-12 16:03:48", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 16:03:50", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "进入远程控制", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 16:03:57", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 16:26:17", "admin": "thisiswhat", "action": "远程命令", "detail": "taskkill /F /PID 13320", "ip": "127.0.0.1"}
+{"ts": "2026-11-12 16:55:13", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 16:55:30", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 16:56:04", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 34秒，1帧/31KB", "ip": ""}
+{"ts": "2026-11-12 16:56:04", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 17:03:17", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 432秒，502帧/38058KB", "ip": ""}
+{"ts": "2026-11-12 17:03:20", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 17:03:20", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 0秒，1帧/18KB", "ip": ""}
+{"ts": "2026-11-12 17:08:16", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 17:08:17", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 17:08:54", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 17:08:58", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 4秒，1帧/18KB", "ip": ""}
+{"ts": "2026-11-12 17:09:01", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 17:09:05", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 3秒，1帧/18KB", "ip": ""}
+{"ts": "2026-11-12 17:09:12", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 17:10:42", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 90秒，165帧/5133KB", "ip": ""}
+{"ts": "2026-11-12 17:10:42", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 17:10:56", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 13秒，27帧/638KB", "ip": ""}
+{"ts": "2026-11-12 17:11:44", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "58.63.47.101"}
+{"ts": "2026-11-12 17:11:52", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 17:11:58", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 5秒，10帧/236KB", "ip": ""}
+{"ts": "2026-11-12 17:11:59", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 17:12:06", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 6秒，14帧/331KB", "ip": ""}
+{"ts": "2026-11-12 17:12:13", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 17:12:25", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 12秒，24帧/567KB", "ip": ""}
+{"ts": "2026-11-12 17:12:26", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 17:35:37", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 1391秒，12091帧/1175866KB", "ip": ""}
+{"ts": "2026-11-12 17:51:53", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "210.21.60.58"}
+{"ts": "2026-11-12 17:51:59", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 17:54:10", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 131秒，1158帧/71622KB", "ip": ""}
+{"ts": "2026-11-12 17:55:43", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 17:59:28", "admin": "thisiswhat", "action": "远程命令", "detail": "taskkill /F /PID 7428", "ip": "127.0.0.1"}
+{"ts": "2026-11-12 18:00:44", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "210.21.60.58"}
+{"ts": "2026-11-12 18:00:52", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-12 18:04:24", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 211秒，1135帧/24563KB", "ip": ""}
+{"ts": "2026-11-12 18:06:34", "admin": "thisiswhat", "action": "远程门禁验证失败", "detail": "剩余尝试4", "ip": "210.21.60.58"}
+{"ts": "2026-11-12 18:07:34", "admin": "thisiswhat", "action": "远程门禁验证失败", "detail": "剩余尝试3", "ip": "210.21.60.58"}
+{"ts": "2026-11-13 04:32:04", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "123.90.22.93"}
+{"ts": "2026-11-13 04:32:11", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 04:32:30", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 04:32:34", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 22秒，9帧/186KB", "ip": ""}
+{"ts": "2026-11-13 04:33:06", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 35秒，96帧/2130KB", "ip": ""}
+{"ts": "2026-11-13 04:33:06", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 04:33:15", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 8秒，1帧/18KB", "ip": ""}
+{"ts": "2026-11-13 04:33:18", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 04:33:40", "admin": "thisiswhat", "action": "远程关机", "detail": "", "ip": "123.90.22.93"}
+{"ts": "2026-11-13 04:39:55", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "123.90.22.93"}
+{"ts": "2026-11-13 04:39:59", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 04:40:36", "admin": "thisiswhat", "action": "会话接回控制台", "detail": "sid=1", "ip": "123.90.22.93"}
+{"ts": "2026-11-13 04:40:50", "admin": "thisiswhat", "action": "会话接回控制台", "detail": "sid=1", "ip": "123.90.22.93"}
+{"ts": "2026-11-13 04:41:18", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 79秒，84帧/2096KB", "ip": ""}
+{"ts": "2026-11-13 04:42:28", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 04:42:59", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 30秒，429帧/12352KB", "ip": ""}
+{"ts": "2026-11-13 04:43:03", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 04:44:18", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "123.90.22.93"}
+{"ts": "2026-11-13 04:44:31", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 04:45:34", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 63秒，817帧/22391KB", "ip": ""}
+{"ts": "2026-11-13 04:45:34", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 150秒，536帧/22043KB", "ip": ""}
+{"ts": "2026-11-13 04:55:54", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:11:28", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 934秒，13193帧/881843KB", "ip": ""}
+{"ts": "2026-11-13 05:11:28", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:17:41", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 372秒，5379帧/409009KB", "ip": ""}
+{"ts": "2026-11-13 05:17:42", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:20:32", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 170秒，1846帧/212780KB", "ip": ""}
+{"ts": "2026-11-13 05:20:33", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:29:48", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 554秒，5642帧/495418KB", "ip": ""}
+{"ts": "2026-11-13 05:29:49", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:31:09", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 80秒，799帧/92590KB", "ip": ""}
+{"ts": "2026-11-13 05:31:12", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:34:25", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 192秒，2529帧/242334KB", "ip": ""}
+{"ts": "2026-11-13 05:35:13", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:36:48", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 95秒，1004帧/90381KB", "ip": ""}
+{"ts": "2026-11-13 05:36:51", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:38:08", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:38:14", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:38:14", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 5秒，82帧/6731KB", "ip": ""}
+{"ts": "2026-11-13 05:38:19", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 5秒，82帧/6731KB", "ip": ""}
+{"ts": "2026-11-13 05:39:29", "admin": "thisiswhat", "action": "远程命令需确认", "detail": "taskkill /F /IM pythonw.exe & schtasks /Run /TN AiwoServer", "ip": "127.0.0.1"}
+{"ts": "2026-11-13 05:39:34", "admin": "thisiswhat", "action": "远程命令", "detail": "taskkill /F /IM pythonw.exe & schtasks /Run /TN AiwoServer", "ip": "127.0.0.1"}
+{"ts": "2026-11-13 05:39:48", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 176秒，1903帧/216406KB", "ip": ""}
+{"ts": "2026-11-13 05:39:51", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:40:12", "admin": "thisiswhat", "action": "远程命令", "detail": "taskkill /F /IM pythonw.exe; schtasks /Run /TN AiwoServer", "ip": "127.0.0.1"}
+{"ts": "2026-11-13 05:40:43", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:40:49", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:40:49", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 5秒，82帧/7179KB", "ip": ""}
+{"ts": "2026-11-13 05:40:52", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "123.90.22.93"}
+{"ts": "2026-11-13 05:40:54", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 5秒，82帧/7179KB", "ip": ""}
+{"ts": "2026-11-13 05:40:57", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:44:01", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 183秒，2374帧/229196KB", "ip": ""}
+{"ts": "2026-11-13 05:44:01", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 05:44:06", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 4秒，71帧/1859KB", "ip": ""}
+{"ts": "2026-11-13 05:44:09", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 06:07:36", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 1406秒，18261帧/1797374KB", "ip": ""}
+{"ts": "2026-11-13 10:25:09", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "58.63.47.101"}
+{"ts": "2026-11-13 10:25:16", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 10:35:43", "admin": "thisiswhat", "action": "远程命令", "detail": "taskkill /F /IM pythonw.exe; schtasks /Run /TN AiwoServer", "ip": "127.0.0.1"}
+{"ts": "2026-11-13 12:31:17", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "210.21.60.58"}
+{"ts": "2026-11-13 12:31:22", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 12:31:31", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 9秒，1帧/17KB", "ip": ""}
+{"ts": "2026-11-13 12:31:38", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 12:35:57", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 259秒，2501帧/118628KB", "ip": ""}
+{"ts": "2026-11-13 12:49:30", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "58.63.47.101"}
+{"ts": "2026-11-13 12:49:38", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 12:53:16", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 218秒，939帧/30703KB", "ip": ""}
+{"ts": "2026-11-13 12:54:21", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "58.63.47.101"}
+{"ts": "2026-11-13 12:54:32", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 12:54:57", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 25秒，165帧/4904KB", "ip": ""}
+{"ts": "2026-11-13 12:55:04", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 12:57:05", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 121秒，851帧/31905KB", "ip": ""}
+{"ts": "2026-11-13 12:57:06", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 12:57:40", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 34秒，397帧/11834KB", "ip": ""}
+{"ts": "2026-11-13 12:57:40", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 12:57:53", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 12秒，128帧/2886KB", "ip": ""}
+{"ts": "2026-11-13 12:57:56", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 13:00:07", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 131秒，421帧/15375KB", "ip": ""}
+{"ts": "2026-11-13 13:00:10", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 13:00:10", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 0秒，2帧/45KB", "ip": ""}
+{"ts": "2026-11-13 13:04:34", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "58.63.47.101"}
+{"ts": "2026-11-13 13:05:41", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 13:06:14", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 32秒，333帧/8735KB", "ip": ""}
+{"ts": "2026-11-13 13:06:18", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 13:09:53", "admin": "thisiswhat", "action": "远程命令", "detail": "taskkill /F /IM pythonw.exe; schtasks /Run /TN AiwoServer", "ip": "127.0.0.1"}
+{"ts": "2026-11-13 13:15:03", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "58.63.47.101"}
+{"ts": "2026-11-13 13:15:11", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 13:15:14", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 3秒，7帧/119KB", "ip": ""}
+{"ts": "2026-11-13 13:15:20", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 13:17:33", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 13:17:42", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 8秒，95帧/2993KB", "ip": ""}
+{"ts": "2026-11-13 13:18:07", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 13:18:08", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 0秒，13帧/642KB", "ip": ""}
+{"ts": "2026-11-13 13:18:13", "admin": "thisiswhat", "action": "远程命令", "detail": "ps", "ip": "58.63.47.101"}
+{"ts": "2026-11-13 13:18:27", "admin": "thisiswhat", "action": "远程命令", "detail": "taskkill /im douyin.exe /t /f", "ip": "58.63.47.101"}
+{"ts": "2026-11-13 13:18:34", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 13:24:08", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 333秒，3338帧/24860KB", "ip": ""}
+{"ts": "2026-11-13 13:24:23", "admin": "thisiswhat", "action": "远程命令", "detail": "taskkill /im yuanshen.exe /t /f", "ip": "58.63.47.101"}
+{"ts": "2026-11-13 13:24:29", "admin": "thisiswhat", "action": "远程命令", "detail": "ps", "ip": "58.63.47.101"}
+{"ts": "2026-11-13 13:34:08", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 1128秒，3046帧/32532KB", "ip": ""}
+{"ts": "2026-11-13 22:46:24", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 22:46:39", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 15秒，0帧/0KB", "ip": ""}
+{"ts": "2026-11-13 22:46:45", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-13 22:46:59", "admin": "thisiswhat", "action": "远程切换用户", "detail": "", "ip": "120.230.107.230"}
+{"ts": "2026-11-13 22:47:09", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 23秒，0帧/0KB", "ip": ""}
+{"ts": "2026-11-14 05:23:38", "admin": "thisiswhat", "action": "远程门禁验证成功", "detail": "下发访问key", "ip": "120.230.107.230"}
+{"ts": "2026-11-14 05:23:42", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-14 05:24:32", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 49秒，25帧/603KB", "ip": ""}
+{"ts": "2026-11-14 05:24:38", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-14 05:24:49", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 10秒，1帧/27KB", "ip": ""}
+{"ts": "2026-11-14 05:24:49", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-14 05:33:12", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 503秒，815帧/101671KB", "ip": ""}
+{"ts": "2026-11-14 05:33:13", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-14 05:53:04", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 1191秒，2103帧/187494KB", "ip": ""}
+{"ts": "2026-11-14 05:53:05", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-14 06:00:55", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 470秒，799帧/75057KB", "ip": ""}
+{"ts": "2026-11-14 06:01:11", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-14 06:01:29", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 17秒，3帧/221KB", "ip": ""}
+{"ts": "2026-11-14 06:01:29", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-14 06:01:36", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 7秒，1帧/25KB", "ip": ""}
+{"ts": "2026-11-14 06:01:37", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-14 06:04:55", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 198秒，304帧/29151KB", "ip": ""}
+{"ts": "2026-11-14 06:28:46", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-14 06:35:33", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 406秒，833帧/81471KB", "ip": ""}
+{"ts": "2026-11-14 06:35:40", "admin": "thisiswhat", "action": "远程控制", "detail": "会话开始", "ip": ""}
+{"ts": "2026-11-14 06:35:59", "admin": "thisiswhat", "action": "远程控制", "detail": "会话结束 18秒，92帧/4872KB", "ip": ""}

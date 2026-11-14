@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>⌨ 命令行 · 爱沃</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0c1018;color:#d5e0d0;font-family:Consolas,"Courier New",monospace;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+#out{flex:1;overflow-y:auto;padding:12px 14px;font-size:13.5px;line-height:1.55;white-space:pre-wrap;word-break:break-all}
+#out .cmd{color:#7cd992}
+#out .err{color:#ff8a8a}
+#out .meta{color:#5a6a85}
+#inbar{display:flex;gap:8px;padding:9px 12px;background:#11161f;border-top:1px solid #222b3a;align-items:center}
+#prompt{color:#7cd992;white-space:nowrap;font-size:13.5px}
+#cmd{flex:1;padding:9px 10px;border:1px solid #2a3552;border-radius:6px;background:#151c30;color:#d5e0d0;font-family:inherit;font-size:13.5px}
+#cmd:focus{outline:none;border-color:#3350b0}
+.run{padding:9px 16px;border:none;border-radius:6px;background:#3350b0;color:#fff;cursor:pointer;font-size:13px}
+.hint{padding:5px 12px;background:#11161f;color:#5a6a85;font-size:11.5px;border-top:1px solid #1a2230}
+a.back{color:#7c9bff;text-decoration:none;font-size:12px}
+</style>
+</head>
+<body>
+<div id="out"><div class="meta">爱沃远程命令行 · PowerShell · 工作目录 d:\server · 单条命令上限 120 秒</div><div class="meta">输入 <b>clear</b> 清屏 · <b>help</b> 查看常用命令 · <a class="back" href="/__remote/menu">← 返回选择</a></div></div>
+<div class="hint">↑/↓ 翻历史命令</div>
+<div id="inbar">
+  <span id="prompt">PS D:\server&gt;</span>
+  <input id="cmd" autocomplete="off" spellcheck="false" autofocus>
+  <button class="run" id="runBtn">执行</button>
+</div>
+<script>
+const out = document.getElementById('out');
+const cmd = document.getElementById('cmd');
+const runBtn = document.getElementById('runBtn');
+const hist = [];
+let hi = -1, busy = false;
+
+function esc(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function add(html) {
+  const d = document.createElement('div');
+  d.innerHTML = html;
+  out.appendChild(d);
+  out.scrollTop = out.scrollHeight;
+}
+
+async function run() {
+  if (busy) return;
+  const text = cmd.value.trim();
+  if (!text) return;
+  cmd.value = '';
+  hist.push(text); hi = hist.length;
+  if (text === 'clear' || text === 'cls') { out.innerHTML = ''; return; }
+  if (text === 'help') {
+    add('<div class="meta">常用：Get-ChildItem（列目录）· Get-Content 文件（读文件）· Get-Process（进程）· Get-Service（服务）· Stop-Process -Name x（杀进程）· ipconfig · Get-PSDrive（磁盘）</div>');
+    return;
+  }
+  add('<div class="cmd">PS D:\\server&gt; ' + esc(text) + '</div>');
+  busy = true; runBtn.textContent = '…';
+  try {
+    const r = await fetch('/__remote/cmd'+location.search, {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({cmd: text})
+    });
+    const j = await r.json();
+    if (j.confirm) {
+      add('<div class="err">⚠ ' + esc(j.msg) + '</div>');
+      cmd.value = '! ' + text;
+      cmd.focus();
+    }
+    else if (j.error) add('<div class="err">❌ ' + esc(j.error) + '</div>');
+    else {
+      if (j.out) add(esc(j.out.replace(/\n$/, '')));
+      if (j.err) add('<div class="err">' + esc(j.err.replace(/\n$/, '')) + '</div>');
+      if (!j.out && !j.err) add('<div class="meta">(无输出) 退出码 ' + j.exit + '</div>');
+      else if (j.exit !== 0) add('<div class="meta">退出码 ' + j.exit + '</div>');
+    }
+  } catch (e) {
+    add('<div class="err">❌ ' + esc(e.message) + '</div>');
+  }
+  busy = false; runBtn.textContent = '执行';
+  out.scrollTop = out.scrollHeight;
+}
+runBtn.onclick = run;
+cmd.addEventListener('keydown', e => {
+  if (e.key === 'Enter') run();
+  else if (e.key === 'ArrowUp') {
+    if (hi > 0) { hi--; cmd.value = hist[hi] || ''; e.preventDefault(); }
+  } else if (e.key === 'ArrowDown') {
+    if (hi < hist.length - 1) { hi++; cmd.value = hist[hi]; }
+    else { hi = hist.length; cmd.value = ''; }
+    e.preventDefault();
+  }
+});
+</script>
+</body>
+</html>
